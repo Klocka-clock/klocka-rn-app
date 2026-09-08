@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-react-native-expo",
+  "name": "klocka-rn-app",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "author": "Quang Le",
@@ -74,8 +74,6 @@
     "@types/react": "~19.1.0",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^17.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.5.0",
     "prettier": "3.6.2",
