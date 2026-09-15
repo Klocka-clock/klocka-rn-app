@@ -8,7 +8,7 @@ export const config = {
     "--color-primary-200": "115 115 115",
     "--color-primary-300": "102 102 102",
     "--color-primary-400": "82 82 82",
-    "--color-primary-500": "51 51 51",
+    "--color-primary-500": "25 34 49",
     "--color-primary-600": "41 41 41",
     "--color-primary-700": "31 31 31",
     "--color-primary-800": "13 13 13",
@@ -22,7 +22,7 @@ export const config = {
     "--color-secondary-200": "242 242 242",
     "--color-secondary-300": "237 237 237",
     "--color-secondary-400": "230 230 231",
-    "--color-secondary-500": "217 217 219",
+    "--color-secondary-500": "167 56 50",
     "--color-secondary-600": "198 199 199",
     "--color-secondary-700": "189 189 189",
     "--color-secondary-800": "177 177 177",
@@ -36,7 +36,7 @@ export const config = {
     "--color-tertiary-200": "254 209 170",
     "--color-tertiary-300": "253 180 116",
     "--color-tertiary-400": "251 157 75",
-    "--color-tertiary-500": "231 129 40",
+    "--color-tertiary-500": "230 154 88",
     "--color-tertiary-600": "215 117 31",
     "--color-tertiary-700": "180 98 26",
     "--color-tertiary-800": "130 73 23",
@@ -110,7 +110,7 @@ export const config = {
     "--color-typography-600": "115 115 115",
     "--color-typography-700": "82 82 82",
     "--color-typography-800": "64 64 64",
-    "--color-typography-900": "38 38 39",
+    "--color-typography-900": "27 28 25",
     "--color-typography-950": "23 23 23",
 
     /* Outline */
@@ -120,7 +120,7 @@ export const config = {
     "--color-outline-200": "221 220 219",
     "--color-outline-300": "211 211 211",
     "--color-outline-400": "165 163 163",
-    "--color-outline-500": "140 141 141",
+    "--color-outline-500": "117 119 125",
     "--color-outline-600": "115 116 116",
     "--color-outline-700": "83 82 82",
     "--color-outline-800": "65 65 65",
@@ -129,7 +129,7 @@ export const config = {
 
     /* Background */
     "--color-background-0": "255 255 255",
-    "--color-background-50": "246 246 246",
+    "--color-background-50": "251 249 244",
     "--color-background-100": "242 241 241",
     "--color-background-200": "220 219 219",
     "--color-background-300": "213 212 212",
@@ -138,8 +138,8 @@ export const config = {
     "--color-background-600": "116 116 116",
     "--color-background-700": "83 82 82",
     "--color-background-800": "65 64 64",
-    "--color-background-900": "39 38 37",
-    "--color-background-950": "18 18 18",
+    "--color-background-900": "48 49 46",
+    "--color-background-950": "14 20 29",
 
     /* Background Special */
     "--color-background-error": "254 241 241",
@@ -160,7 +160,7 @@ export const config = {
     "--color-primary-200": "197 197 197",
     "--color-primary-300": "212 212 212",
     "--color-primary-400": "221 221 221",
-    "--color-primary-500": "230 230 230",
+    "--color-primary-500": "190 199 219",
     "--color-primary-600": "240 240 240",
     "--color-primary-700": "250 250 250",
     "--color-primary-800": "253 253 253",
@@ -174,7 +174,7 @@ export const config = {
     "--color-secondary-200": "39 39 39",
     "--color-secondary-300": "44 44 44",
     "--color-secondary-400": "56 57 57",
-    "--color-secondary-500": "63 64 64",
+    "--color-secondary-500": "255 180 172",
     "--color-secondary-600": "86 86 86",
     "--color-secondary-700": "110 110 110",
     "--color-secondary-800": "135 135 135",
@@ -188,7 +188,7 @@ export const config = {
     "--color-tertiary-200": "180 98 26",
     "--color-tertiary-300": "215 117 31",
     "--color-tertiary-400": "231 129 40",
-    "--color-tertiary-500": "251 157 75",
+    "--color-tertiary-500": "230 154 88",
     "--color-tertiary-600": "253 180 116",
     "--color-tertiary-700": "254 209 170",
     "--color-tertiary-800": "255 233 213",
@@ -262,7 +262,7 @@ export const config = {
     "--color-typography-600": "212 212 212",
     "--color-typography-700": "219 219 220",
     "--color-typography-800": "229 229 229",
-    "--color-typography-900": "245 245 245",
+    "--color-typography-900": "242 241 236",
     "--color-typography-950": "254 254 255",
 
     /* Outline */
@@ -272,7 +272,7 @@ export const config = {
     "--color-outline-200": "83 82 82",
     "--color-outline-300": "115 116 116",
     "--color-outline-400": "140 141 141",
-    "--color-outline-500": "165 163 163",
+    "--color-outline-500": "137 144 156",
     "--color-outline-600": "211 211 211",
     "--color-outline-700": "221 220 219",
     "--color-outline-800": "230 230 230",
@@ -280,8 +280,8 @@ export const config = {
     "--color-outline-950": "253 254 254",
 
     /* Background */
-    "--color-background-0": "18 18 18",
-    "--color-background-50": "39 38 37",
+    "--color-background-0": "21 29 41",
+    "--color-background-50": "27 36 48",
     "--color-background-100": "65 64 64",
     "--color-background-200": "83 82 82",
     "--color-background-300": "116 116 116",
@@ -290,8 +290,8 @@ export const config = {
     "--color-background-600": "213 212 212",
     "--color-background-700": "229 228 228",
     "--color-background-800": "242 241 241",
-    "--color-background-900": "246 246 246",
-    "--color-background-950": "255 255 255",
+    "--color-background-900": "228 226 221",
+    "--color-background-950": "242 241 236",
 
     /* Background Special */
     "--color-background-error": "66 43 43",

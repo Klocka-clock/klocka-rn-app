@@ -5,6 +5,7 @@ import "../global.css"
 import { QueryProvider } from "@/provider/query-provider"
 import { POSTHOG_API_KEY, POSTHOG_HOST } from "@/config/analytics"
 import { PostHogProvider } from "posthog-react-native"
+import { useGlobalStore } from "@/store/use-global-store"
 
 if (__DEV__) {
   void import("@/lib/reactotron")
@@ -20,8 +21,10 @@ function RootLayoutNav() {
 }
 
 export default function RootLayout() {
+  const theme = useGlobalStore((state) => state.theme)
+
   const app = (
-    <GluestackUIProvider mode="light">
+    <GluestackUIProvider mode={theme}>
       {/* <ClerkProvider
         tokenCache={tokenCache}
         publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY as string}
