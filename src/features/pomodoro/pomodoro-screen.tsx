@@ -6,6 +6,7 @@ import { Modal, Pressable, Text, View, useWindowDimensions } from "react-native"
 import { useTranslation } from "@/i18n/use-translation"
 import { useGlobalStore, type PomodoroBackground } from "@/store/use-global-store"
 import { themeTokens } from "@/theme/tokens"
+import { HomeHeader } from "@/features/home/components/home-header"
 
 const BACKGROUNDS: Record<PomodoroBackground, { base: string; wave: string; accent: string }> = {
   aurora: { base: "#FBF9F4", wave: "#E2EBD8", accent: "#CDE4EF" },
@@ -137,18 +138,25 @@ export function PomodoroScreen() {
             </View>
           </View>
         </View>
-        <View className={isLandscape ? "w-[280px]" : "mt-8 px-1"}>
-          <Text className="mb-3 text-[22px] font-semibold" style={{ color: colors.onSurface }}>
-            {t("pomodoro.presets")}
-          </Text>
-          {["rest", "coffee", "meditate"].map((key) => (
-            <View key={key} className="mb-3 rounded-[22px] bg-white/85 px-4 py-4 dark:bg-[#1B2430]">
-              <Text className="text-[15px] font-semibold" style={{ color: colors.onSurface }}>
-                {t(`pomodoro.${key}` as "pomodoro.rest" | "pomodoro.coffee" | "pomodoro.meditate")}
-              </Text>
-            </View>
-          ))}
-        </View>
+        {!isLandscape && (
+          <View className="mt-8 px-1">
+            <Text className="mb-3 text-[22px] font-semibold" style={{ color: colors.onSurface }}>
+              {t("pomodoro.presets")}
+            </Text>
+            {["rest", "coffee", "meditate"].map((key) => (
+              <View
+                key={key}
+                className="mb-3 rounded-[22px] bg-white/85 px-4 py-4 dark:bg-[#1B2430]"
+              >
+                <Text className="text-[15px] font-semibold" style={{ color: colors.onSurface }}>
+                  {t(
+                    `pomodoro.${key}` as "pomodoro.rest" | "pomodoro.coffee" | "pomodoro.meditate",
+                  )}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
       </View>
     ),
     [colors, isLandscape, isRunning, remaining, t],
@@ -168,21 +176,17 @@ export function PomodoroScreen() {
         className="absolute -left-24 bottom-20 h-80 w-80 rounded-full opacity-50"
         style={{ backgroundColor: palette.wave }}
       />
-      <View className="flex-row items-center justify-between py-4">
-        <Text
-          className="text-[24px] font-semibold tracking-[4px]"
-          style={{ color: colors.onSurface }}
-        >
-          KLOCKA
-        </Text>
-        <Pressable
-          accessibilityLabel={t("pomodoro.rotate")}
-          className="h-11 w-11 items-center justify-center rounded-full bg-white shadow-pillowy dark:bg-[#1B2430]"
-          onPress={lockOrientation}
-        >
-          <RotateCw color={colors.onSurfaceVariant} size={19} />
-        </Pressable>
-      </View>
+      <HomeHeader
+        accessory={
+          <Pressable
+            accessibilityLabel={t("pomodoro.rotate")}
+            className="h-10 w-10 items-center justify-center rounded-full bg-white shadow-pillowy dark:bg-[#1B2430]"
+            onPress={lockOrientation}
+          >
+            <RotateCw color={theme === "dark" ? "#F2F1EC" : "#192231"} size={17} />
+          </Pressable>
+        }
+      />
       <View className="flex-1">{content}</View>
       <Modal
         transparent

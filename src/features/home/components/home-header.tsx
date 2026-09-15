@@ -1,9 +1,10 @@
 import { useGlobalStore } from "@/store/use-global-store"
 import { Moon, Sun, UserRound, Volume2, VolumeX } from "lucide-react-native"
+import type { ReactNode } from "react"
 import { Pressable, Text, View } from "react-native"
 import { useTranslation } from "@/i18n/use-translation"
 
-export function HomeHeader() {
+export function HomeHeader({ accessory }: { accessory?: ReactNode }) {
   const { t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
   const soundscape = useGlobalStore((state) => state.soundscape)
@@ -25,6 +26,7 @@ export function HomeHeader() {
       </Text>
 
       <View className="flex-row items-center gap-2">
+        {accessory}
         <Pressable
           accessibilityLabel={isSoundOn ? t("soundscapes.rain") : t("soundscapes.stream")}
           accessibilityRole="button"
