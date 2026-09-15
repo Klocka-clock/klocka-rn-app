@@ -42,6 +42,7 @@ export const translations = {
       aiBackground: "AI tạo nền",
     },
     cities: {
+      hoChiMinh: { country: "Việt Nam", timezone: "ICT" },
       stockholm: { country: "Thụy Điển", timezone: "CET" },
       tokyo: { country: "Nhật Bản", timezone: "JST" },
       shanghai: { country: "Trung Quốc", timezone: "CST" },
@@ -91,6 +92,7 @@ export const translations = {
       aiBackground: "AI generated",
     },
     cities: {
+      hoChiMinh: { country: "Vietnam", timezone: "ICT" },
       stockholm: { country: "Sweden", timezone: "CET" },
       tokyo: { country: "Japan", timezone: "JST" },
       shanghai: { country: "China", timezone: "CST" },
