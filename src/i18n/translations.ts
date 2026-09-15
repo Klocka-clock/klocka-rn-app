@@ -10,6 +10,7 @@ export const translations = {
       weatherDetail: "Thời tiết hiện tại",
       degrees: "14°C",
       weather: "Sương mù quanh đảo",
+      profile: "Hồ sơ",
       now: "Bây giờ",
       daylight: "Ban ngày",
       midnight: "Nửa đêm",
@@ -60,6 +61,7 @@ export const translations = {
       currentCityCountry: "Sweden",
       degrees: "14°C",
       weather: "Island mist",
+      profile: "Profile",
       now: "Now",
       daylight: "Daylight",
       midnight: "Midnight",
@@ -112,6 +114,7 @@ export type TranslationKey =
   | "home.weatherDetail"
   | "home.degrees"
   | "home.weather"
+  | "home.profile"
   | "home.now"
   | "home.daylight"
   | "home.midnight"
