@@ -1,27 +1,20 @@
-import { AlarmClock, Flower2, Globe2, History, Hourglass } from "lucide-react-native"
+import { AlarmClock, Flower2, Globe2, Hourglass } from "lucide-react-native"
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs"
 import { Pressable, Text, View } from "react-native"
 import { useTranslation } from "@/i18n/use-translation"
 import { useGlobalStore } from "@/store/use-global-store"
 
 const iconByRoute = {
-  "index": Globe2,
-  "scanner": Flower2,
-  "settings": Hourglass,
-  "profile": AlarmClock,
-  "signal-history": History,
+  index: Globe2,
+  scanner: Flower2,
+  settings: Hourglass,
+  profile: AlarmClock,
 } as const
 
 export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarProps) {
   const { t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
-  const labels = [
-    t("tabs.world"),
-    t("tabs.pomodoro"),
-    t("tabs.timer"),
-    t("tabs.alarm"),
-    t("tabs.recent"),
-  ]
+  const labels = [t("tabs.world"), t("tabs.pomodoro"), t("tabs.timer"), t("tabs.alarm")]
 
   return (
     <View className="border-t border-[#EAE8E3] bg-[#FBF9F4] px-2 pb-2 pt-2 dark:border-[#303B49] dark:bg-[#0E141D]">

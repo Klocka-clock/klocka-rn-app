@@ -20,6 +20,8 @@ describe("useGlobalStore", () => {
       language: "vi",
       backgroundMode: "default",
       selectedWorldCityIds: ["hoChiMinh"],
+      pomodoroOrientation: "portrait",
+      pomodoroBackground: "aurora",
     })
   })
 
@@ -32,6 +34,8 @@ describe("useGlobalStore", () => {
     expect(state.language).toBe("vi")
     expect(state.backgroundMode).toBe("default")
     expect(state.selectedWorldCityIds).toEqual(["hoChiMinh"])
+    expect(state.pomodoroOrientation).toBe("portrait")
+    expect(state.pomodoroBackground).toBe("aurora")
   })
 
   it("updates each persisted preference through its dedicated action", () => {
@@ -44,6 +48,8 @@ describe("useGlobalStore", () => {
     state.setBackgroundMode("ai")
     state.addWorldCity("tokyo")
     state.addWorldCity("tokyo")
+    state.setPomodoroOrientation("landscape")
+    state.setPomodoroBackground("mist")
 
     expect(useGlobalStore.getState()).toMatchObject({
       theme: "dark",
@@ -52,6 +58,8 @@ describe("useGlobalStore", () => {
       language: "en",
       backgroundMode: "ai",
       selectedWorldCityIds: ["hoChiMinh", "tokyo"],
+      pomodoroOrientation: "landscape",
+      pomodoroBackground: "mist",
     })
   })
 
@@ -67,6 +75,8 @@ describe("useGlobalStore", () => {
       language: "vi",
       backgroundMode: "default",
       selectedWorldCityIds: ["hoChiMinh"],
+      pomodoroOrientation: "portrait",
+      pomodoroBackground: "aurora",
     })
     expect(persisted).not.toHaveProperty("setTheme")
   })
