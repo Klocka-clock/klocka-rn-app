@@ -1,43 +1,40 @@
-import {  Tabs } from "expo-router"
-import { HistoryIcon, Home, Scan, Settings, UserCircle2 } from "lucide-react-native"
-
+import { HomeBottomTabs } from "@/features/home/components/home-bottom-tabs"
+import { Tabs } from "expo-router"
+import { useTranslation } from "@/i18n/use-translation"
 
 export default function TabsLayout() {
+  const { t } = useTranslation()
+
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs tabBar={(props) => <HomeBottomTabs {...props} />} screenOptions={{ headerShown: false }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => <Home size={28} color={color} />,
+          title: t("tabs.world"),
         }}
       />
       <Tabs.Screen
         name="scanner"
         options={{
-          title: "Scanner",
-          tabBarIcon: ({ color }) => <Scan size={28} color={color} />,
+          title: t("tabs.pomodoro"),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Setting",
-          tabBarIcon: ({ color }) => <Settings size={28} color={color} />,
+          title: t("tabs.timer"),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
-          tabBarIcon: ({ color }) => <UserCircle2 size={28} color={color} />,
+          title: t("tabs.alarm"),
         }}
       />
       <Tabs.Screen
         name="signal-history"
         options={{
-          title: "Signal History",
-          tabBarIcon: ({ color }) => <HistoryIcon size={28} color={color} />,
+          title: t("tabs.recent"),
         }}
       />
     </Tabs>
