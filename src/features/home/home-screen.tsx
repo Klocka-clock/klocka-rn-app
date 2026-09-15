@@ -6,6 +6,7 @@ import { useGlobalStore } from "@/store/use-global-store"
 import { themeTokens } from "@/theme/tokens"
 import { useTranslation } from "@/i18n/use-translation"
 import { worldCities } from "./home.data"
+import { getSelectedWorldCities } from "./home.utils"
 import { CurrentTimeCard } from "./components/current-time-card"
 import { HomeHeader } from "./components/home-header"
 import { WorldClockCard } from "./components/world-clock-card"
@@ -15,21 +16,15 @@ export function HomeScreen() {
   const { t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
   const mode = useGlobalStore((state) => state.mode)
-  const primaryCityId = useGlobalStore((state) => state.primaryCityId)
-  const setPrimaryCityId = useGlobalStore((state) => state.setPrimaryCityId)
+  const selectedWorldCityIds = useGlobalStore((state) => state.selectedWorldCityIds)
+  const addWorldCity = useGlobalStore((state) => state.addWorldCity)
   const [now, setNow] = useState(() => new Date())
   const [isCountryPickerVisible, setCountryPickerVisible] = useState(false)
   const colors = themeTokens[theme]
-  const currentCity = useMemo(
-    () => worldCities.find((city) => city.id === primaryCityId) ?? worldCities[0],
-    [primaryCityId],
-  )
+  const currentCity = worldCities[0]
   const cityCards = useMemo(
-    () =>
-      worldCities.filter((city) =>
-        ["tokyo", "newYork", "london", "paris", "sydney"].includes(city.id),
-      ),
-    [],
+    () => getSelectedWorldCities(selectedWorldCityIds, worldCities),
+    [selectedWorldCityIds],
   )
 
   useEffect(() => {
@@ -109,7 +104,7 @@ export function HomeScreen() {
               </Pressable>
             </View>
             {worldCities.map((city) => {
-              const selected = city.id === primaryCityId
+              const selected = selectedWorldCityIds.includes(city.id)
 
               return (
                 <Pressable
@@ -118,8 +113,9 @@ export function HomeScreen() {
                   accessibilityState={{ selected }}
                   className="mb-2 flex-row items-center justify-between rounded-2xl px-4 py-3 active:opacity-70"
                   style={{ backgroundColor: selected ? colors.waveGreen : colors.surfaceContainer }}
+                  disabled={selected}
                   onPress={() => {
-                    setPrimaryCityId(city.id)
+                    addWorldCity(city.id)
                     setCountryPickerVisible(false)
                   }}
                 >

@@ -23,14 +23,15 @@ export type GlobalState = {
   soundscape: Soundscape
   language: Language
   backgroundMode: BackgroundMode
-  primaryCityId: PrimaryCityId
+  selectedWorldCityIds: PrimaryCityId[]
   setTheme: (theme: GlobalState["theme"]) => void
   setHasSeenOnboarding: (value: boolean) => void
   setMode: (mode: AppMode) => void
   setSoundscape: (soundscape: Soundscape) => void
   setLanguage: (language: Language) => void
   setBackgroundMode: (backgroundMode: BackgroundMode) => void
-  setPrimaryCityId: (primaryCityId: PrimaryCityId) => void
+  setSelectedWorldCityIds: (selectedWorldCityIds: PrimaryCityId[]) => void
+  addWorldCity: (cityId: PrimaryCityId) => void
 }
 
 export type PersistedGlobalState = Pick<
@@ -41,7 +42,7 @@ export type PersistedGlobalState = Pick<
   | "soundscape"
   | "language"
   | "backgroundMode"
-  | "primaryCityId"
+  | "selectedWorldCityIds"
 >
 
 export function getPersistedGlobalState(state: GlobalState): PersistedGlobalState {
@@ -52,7 +53,7 @@ export function getPersistedGlobalState(state: GlobalState): PersistedGlobalStat
     soundscape: state.soundscape,
     language: state.language,
     backgroundMode: state.backgroundMode,
-    primaryCityId: state.primaryCityId,
+    selectedWorldCityIds: state.selectedWorldCityIds,
   }
 }
 
@@ -65,14 +66,20 @@ export const useGlobalStore = create<GlobalState>()(
       soundscape: "rain",
       language: "vi",
       backgroundMode: "default",
-      primaryCityId: "hoChiMinh",
+      selectedWorldCityIds: ["hoChiMinh"],
       setTheme: (theme) => set({ theme }),
       setHasSeenOnboarding: (hasSeenOnboarding) => set({ hasSeenOnboarding }),
       setMode: (mode) => set({ mode }),
       setSoundscape: (soundscape) => set({ soundscape }),
       setLanguage: (language) => set({ language }),
       setBackgroundMode: (backgroundMode) => set({ backgroundMode }),
-      setPrimaryCityId: (primaryCityId) => set({ primaryCityId }),
+      setSelectedWorldCityIds: (selectedWorldCityIds) => set({ selectedWorldCityIds }),
+      addWorldCity: (cityId) =>
+        set((state) =>
+          state.selectedWorldCityIds.includes(cityId)
+            ? state
+            : { selectedWorldCityIds: [...state.selectedWorldCityIds, cityId] },
+        ),
     }),
     {
       name: "klocka-global-state",

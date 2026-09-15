@@ -1,11 +1,12 @@
 import { describe, expect, it } from "vitest"
 
-import { defaultWorldCities } from "@/features/home/home.data"
+import { defaultWorldCities, worldCities } from "@/features/home/home.data"
 import {
   formatClockTime,
   getTimeZoneLabel,
   getUtcOffsetLabel,
   getWorldClockCardPalette,
+  getSelectedWorldCities,
 } from "@/features/home/home.utils"
 
 describe("world clock helpers", () => {
@@ -19,6 +20,12 @@ describe("world clock helpers", () => {
 
   it("keeps the world defaults in Vietnam, Japan, and China order", () => {
     expect(defaultWorldCities.map((city) => city.id)).toEqual(["hoChiMinh", "tokyo", "shanghai"])
+  })
+
+  it("resolves selected city ids in their persisted order", () => {
+    expect(
+      getSelectedWorldCities(["hoChiMinh", "tokyo"], worldCities).map((city) => city.id),
+    ).toEqual(["hoChiMinh", "tokyo"])
   })
 
   it("localizes a city's country and timezone label", () => {

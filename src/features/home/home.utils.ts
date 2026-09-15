@@ -1,12 +1,21 @@
 import type { Language } from "@/store/use-global-store"
 import { translations } from "@/i18n/translations"
-import type { CityId } from "./home.data"
+import type { CityId, WorldCity } from "./home.data"
 
 export type WorldClockCardPalette = {
   card: string
   panel: string
   ink: string
   muted: string
+}
+
+export function getSelectedWorldCities(
+  selectedCityIds: readonly CityId[],
+  cities: readonly WorldCity[],
+): WorldCity[] {
+  return selectedCityIds
+    .map((cityId) => cities.find((city) => city.id === cityId))
+    .filter((city): city is WorldCity => city !== undefined)
 }
 
 export function formatClockTime(date: Date, timeZone: string, locale: string): string {
