@@ -1,7 +1,6 @@
 import { getTimeZoneLabel, formatClockTime } from "@/features/home/home.utils"
 import type { WorldCity } from "@/features/home/home.data"
 import { useGlobalStore } from "@/store/use-global-store"
-import { CloudFog } from "lucide-react-native"
 import { Text, View } from "react-native"
 import { useTranslation } from "@/i18n/use-translation"
 
@@ -11,7 +10,7 @@ type CurrentTimeCardProps = {
 }
 
 export function CurrentTimeCard({ city, now }: CurrentTimeCardProps) {
-  const { language, t } = useTranslation()
+  const { language } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
   const isDark = theme === "dark"
   const ink = isDark ? "#F2F1EC" : "#192231"
@@ -34,12 +33,9 @@ export function CurrentTimeCard({ city, now }: CurrentTimeCardProps) {
             {getTimeZoneLabel(city.id, language)}
           </Text>
         </View>
-        <View className="mt-1 flex-row items-center gap-1">
-          <CloudFog color={muted} size={14} />
-          <Text className="text-[11px]" style={{ color: muted }}>
-            {t("home.degrees")} · {t("home.weather")}
-          </Text>
-        </View>
+        <Text className="mt-1 text-[11px]" style={{ color: muted }}>
+          {city.timezoneCode}
+        </Text>
       </View>
 
       <View className="z-10 mt-4 flex-row items-end">

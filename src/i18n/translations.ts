@@ -7,9 +7,6 @@ export const translations = {
       worldTitle: "Thế giới",
       currentCity: "Stockholm",
       currentCityCountry: "Thụy Điển",
-      weatherDetail: "Thời tiết hiện tại",
-      degrees: "14°C",
-      weather: "Sương mù quanh đảo",
       profile: "Hồ sơ",
       now: "Bây giờ",
       daylight: "Ban ngày",
@@ -87,8 +84,6 @@ export const translations = {
       worldTitle: "World",
       currentCity: "Stockholm",
       currentCityCountry: "Sweden",
-      degrees: "14°C",
-      weather: "Island mist",
       profile: "Profile",
       now: "Now",
       daylight: "Daylight",
@@ -167,9 +162,6 @@ export type TranslationKey =
   | "home.worldTitle"
   | "home.currentCity"
   | "home.currentCityCountry"
-  | "home.weatherDetail"
-  | "home.degrees"
-  | "home.weather"
   | "home.profile"
   | "home.now"
   | "home.daylight"

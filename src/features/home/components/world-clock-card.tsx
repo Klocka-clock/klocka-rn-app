@@ -6,7 +6,7 @@ import {
   getWorldClockCardPalette,
 } from "@/features/home/home.utils"
 import { useGlobalStore } from "@/store/use-global-store"
-import { Cloud, CloudSun, Moon, Sun, Waves } from "lucide-react-native"
+import { Cloud, CloudSun, Moon, Sun } from "lucide-react-native"
 import { Text, View } from "react-native"
 import { useTranslation } from "@/i18n/use-translation"
 
@@ -61,16 +61,6 @@ export function WorldClockCard({ city, now }: WorldClockCardProps) {
           <Text className="mt-1 text-[11px]" style={{ color: palette.muted }}>
             {getTimeZoneLabel(city.id, language)}
           </Text>
-          <View className="mt-2 flex-row items-center gap-1.5">
-            {isNight ? (
-              <Moon color={palette.muted} size={11} />
-            ) : (
-              <Waves color={palette.muted} size={11} />
-            )}
-            <Text className="text-[10px]" style={{ color: palette.muted }}>
-              {city.weather}
-            </Text>
-          </View>
         </View>
         <View className="items-end">
           <Text className="text-[30px] font-light tracking-[-1px]" style={{ color: palette.ink }}>
