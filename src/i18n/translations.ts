@@ -14,6 +14,8 @@ export const translations = {
       now: "Bây giờ",
       daylight: "Ban ngày",
       midnight: "Nửa đêm",
+      addCountry: "Thêm quốc gia",
+      chooseCountry: "Chọn quốc gia",
     },
     modes: {
       world: "Thế giới",
@@ -91,6 +93,8 @@ export const translations = {
       now: "Now",
       daylight: "Daylight",
       midnight: "Midnight",
+      addCountry: "Add country",
+      chooseCountry: "Choose a country",
     },
     modes: {
       world: "World",
@@ -170,6 +174,8 @@ export type TranslationKey =
   | "home.now"
   | "home.daylight"
   | "home.midnight"
+  | "home.addCountry"
+  | "home.chooseCountry"
   | "modes.world"
   | "modes.timer"
   | "modes.pomodoro"

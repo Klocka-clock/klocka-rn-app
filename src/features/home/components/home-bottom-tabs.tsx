@@ -2,6 +2,7 @@ import { AlarmClock, Flower2, Globe2, History, Hourglass } from "lucide-react-na
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs"
 import { Pressable, Text, View } from "react-native"
 import { useTranslation } from "@/i18n/use-translation"
+import { useGlobalStore } from "@/store/use-global-store"
 
 const iconByRoute = {
   "index": Globe2,
@@ -13,6 +14,7 @@ const iconByRoute = {
 
 export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarProps) {
   const { t } = useTranslation()
+  const theme = useGlobalStore((state) => state.theme)
   const labels = [
     t("tabs.world"),
     t("tabs.pomodoro"),
@@ -27,7 +29,13 @@ export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarP
         {state.routes.map((route, index) => {
           const isFocused = state.index === index
           const Icon = iconByRoute[route.name as keyof typeof iconByRoute] ?? Globe2
-          const color = isFocused ? "#192231" : "#9A9CA0"
+          const color = isFocused
+            ? theme === "dark"
+              ? "#BEC7DB"
+              : "#192231"
+            : theme === "dark"
+              ? "#89909C"
+              : "#9A9CA0"
 
           return (
             <Pressable

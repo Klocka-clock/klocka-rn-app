@@ -6,6 +6,15 @@ export type AppMode = "world" | "timer" | "pomodoro"
 export type Soundscape = "rain" | "stream"
 export type Language = "vi" | "en"
 export type BackgroundMode = "default" | "ai"
+export type PrimaryCityId =
+  | "hoChiMinh"
+  | "tokyo"
+  | "shanghai"
+  | "stockholm"
+  | "newYork"
+  | "london"
+  | "paris"
+  | "sydney"
 
 export type GlobalState = {
   theme: "light" | "dark"
@@ -14,17 +23,25 @@ export type GlobalState = {
   soundscape: Soundscape
   language: Language
   backgroundMode: BackgroundMode
+  primaryCityId: PrimaryCityId
   setTheme: (theme: GlobalState["theme"]) => void
   setHasSeenOnboarding: (value: boolean) => void
   setMode: (mode: AppMode) => void
   setSoundscape: (soundscape: Soundscape) => void
   setLanguage: (language: Language) => void
   setBackgroundMode: (backgroundMode: BackgroundMode) => void
+  setPrimaryCityId: (primaryCityId: PrimaryCityId) => void
 }
 
 export type PersistedGlobalState = Pick<
   GlobalState,
-  "theme" | "hasSeenOnboarding" | "mode" | "soundscape" | "language" | "backgroundMode"
+  | "theme"
+  | "hasSeenOnboarding"
+  | "mode"
+  | "soundscape"
+  | "language"
+  | "backgroundMode"
+  | "primaryCityId"
 >
 
 export function getPersistedGlobalState(state: GlobalState): PersistedGlobalState {
@@ -35,6 +52,7 @@ export function getPersistedGlobalState(state: GlobalState): PersistedGlobalStat
     soundscape: state.soundscape,
     language: state.language,
     backgroundMode: state.backgroundMode,
+    primaryCityId: state.primaryCityId,
   }
 }
 
@@ -47,12 +65,14 @@ export const useGlobalStore = create<GlobalState>()(
       soundscape: "rain",
       language: "vi",
       backgroundMode: "default",
+      primaryCityId: "hoChiMinh",
       setTheme: (theme) => set({ theme }),
       setHasSeenOnboarding: (hasSeenOnboarding) => set({ hasSeenOnboarding }),
       setMode: (mode) => set({ mode }),
       setSoundscape: (soundscape) => set({ soundscape }),
       setLanguage: (language) => set({ language }),
       setBackgroundMode: (backgroundMode) => set({ backgroundMode }),
+      setPrimaryCityId: (primaryCityId) => set({ primaryCityId }),
     }),
     {
       name: "klocka-global-state",

@@ -28,10 +28,10 @@ export function CurrentTimeCard({ city, now }: CurrentTimeCardProps) {
       <View className="z-10 flex-row items-start justify-between">
         <View>
           <Text className="text-[25px] font-normal" style={{ color: ink }}>
-            {t("home.currentCity")}
+            {city.name}
           </Text>
           <Text className="mt-0.5 text-[12px]" style={{ color: muted }}>
-            {t("home.currentCityCountry")} · {getTimeZoneLabel(city.id, language).split(" · ")[1]}
+            {getTimeZoneLabel(city.id, language)}
           </Text>
         </View>
         <View className="mt-1 flex-row items-center gap-1">

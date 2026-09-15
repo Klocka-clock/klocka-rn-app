@@ -1,12 +1,6 @@
-export type CityId =
-  | "hoChiMinh"
-  | "tokyo"
-  | "shanghai"
-  | "stockholm"
-  | "newYork"
-  | "london"
-  | "paris"
-  | "sydney"
+import type { PrimaryCityId } from "@/store/use-global-store"
+
+export type CityId = PrimaryCityId
 
 export type WorldCity = {
   id: CityId
