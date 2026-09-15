@@ -1,9 +1,173 @@
-import { Text, View } from 'react-native'
+import { useTranslation } from "@/i18n/use-translation"
+import { useGlobalStore } from "@/store/use-global-store"
+import { themeTokens } from "@/theme/tokens"
+import { StatusBar } from "expo-status-bar"
+import { Check, ChevronRight, Moon, Palette, Sun, Volume2 } from "lucide-react-native"
+import { Pressable, ScrollView, Switch, Text, View } from "react-native"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
-function SettingTab() {
+function SettingRow({
+  icon,
+  label,
+  description,
+  children,
+}: {
+  icon: React.ReactNode
+  label: string
+  description: string
+  children: React.ReactNode
+}) {
   return (
-    <View><Text>SettingTab</Text></View>
+    <View className="flex-row items-center gap-3 border-b border-[#EAE8E3] py-4 dark:border-[#303B49]">
+      <View className="h-10 w-10 items-center justify-center rounded-2xl bg-[#EBF2FA] dark:bg-[#26384D]">
+        {icon}
+      </View>
+      <View className="flex-1">
+        <Text className="text-[15px] font-semibold text-[#192231] dark:text-[#F2F1EC]">
+          {label}
+        </Text>
+        <Text className="mt-0.5 text-[12px] text-[#75777D] dark:text-[#C5C6CC]">{description}</Text>
+      </View>
+      {children}
+    </View>
   )
 }
 
-export default SettingTab
+function ChoicePill({
+  label,
+  selected,
+  onPress,
+}: {
+  label: string
+  selected: boolean
+  onPress: () => void
+}) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
+      className="rounded-full px-3 py-2 active:opacity-70"
+      style={{ backgroundColor: selected ? "#E2EBD8" : "#F0EEE9" }}
+      onPress={onPress}
+    >
+      <Text className="text-[11px] font-semibold" style={{ color: "#192231" }}>
+        {label}
+      </Text>
+    </Pressable>
+  )
+}
+
+export default function SettingsScreen() {
+  const insets = useSafeAreaInsets()
+  const { language, t } = useTranslation()
+  const theme = useGlobalStore((state) => state.theme)
+  const soundscape = useGlobalStore((state) => state.soundscape)
+  const backgroundMode = useGlobalStore((state) => state.backgroundMode)
+  const setLanguage = useGlobalStore((state) => state.setLanguage)
+  const setTheme = useGlobalStore((state) => state.setTheme)
+  const setSoundscape = useGlobalStore((state) => state.setSoundscape)
+  const setBackgroundMode = useGlobalStore((state) => state.setBackgroundMode)
+  const colors = themeTokens[theme]
+
+  return (
+    <View className="flex-1" style={{ backgroundColor: colors.background }}>
+      <StatusBar style={theme === "dark" ? "light" : "dark"} />
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View className="px-5" style={{ paddingTop: Math.max(insets.top, 20) }}>
+          <Text className="text-[30px] font-normal" style={{ color: colors.onSurface }}>
+            {t("settings.title")}
+          </Text>
+          <Text className="mt-1 text-[13px]" style={{ color: colors.onSurfaceVariant }}>
+            {t("settings.language")} · {language === "vi" ? "Tiếng Việt" : "English"}
+          </Text>
+
+          <View className="mt-7 rounded-[30px] bg-white px-4 shadow-floating dark:bg-[#1B2430]">
+            <SettingRow
+              description={t("settings.language")}
+              icon={<Palette color={colors.primary} size={18} />}
+              label={t("settings.language")}
+            >
+              <View className="flex-row gap-1">
+                <ChoicePill
+                  label="VI"
+                  selected={language === "vi"}
+                  onPress={() => setLanguage("vi")}
+                />
+                <ChoicePill
+                  label="EN"
+                  selected={language === "en"}
+                  onPress={() => setLanguage("en")}
+                />
+              </View>
+            </SettingRow>
+
+            <SettingRow
+              description={theme === "dark" ? t("themes.dark") : t("themes.light")}
+              icon={
+                theme === "dark" ? (
+                  <Moon color={colors.primary} size={18} />
+                ) : (
+                  <Sun color={colors.primary} size={18} />
+                )
+              }
+              label={t("themes.light") + " / " + t("themes.dark")}
+            >
+              <Switch
+                accessibilityLabel={t("themes.dark")}
+                thumbColor="#FFFFFF"
+                trackColor={{ false: "#DBDAD5", true: "#9AB8A2" }}
+                value={theme === "dark"}
+                onValueChange={(value) => setTheme(value ? "dark" : "light")}
+              />
+            </SettingRow>
+
+            <SettingRow
+              description={soundscape === "rain" ? t("soundscapes.rain") : t("soundscapes.stream")}
+              icon={<Volume2 color={colors.primary} size={18} />}
+              label={t("settings.soundscape")}
+            >
+              <View className="flex-row gap-1">
+                <ChoicePill
+                  label="☔"
+                  selected={soundscape === "rain"}
+                  onPress={() => setSoundscape("rain")}
+                />
+                <ChoicePill
+                  label="〰"
+                  selected={soundscape === "stream"}
+                  onPress={() => setSoundscape("stream")}
+                />
+              </View>
+            </SettingRow>
+
+            <SettingRow
+              description={
+                backgroundMode === "ai"
+                  ? t("settings.aiBackground")
+                  : t("settings.defaultBackground")
+              }
+              icon={<Palette color={colors.primary} size={18} />}
+              label={t("settings.background")}
+            >
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ selected: backgroundMode === "ai" }}
+                className="flex-row items-center gap-1 rounded-full bg-[#F0EEE9] px-3 py-2 active:opacity-70 dark:bg-[#303B49]"
+                onPress={() => setBackgroundMode(backgroundMode === "default" ? "ai" : "default")}
+              >
+                {backgroundMode === "ai" && <Check color={colors.primary} size={13} />}
+                <Text className="text-[11px] font-semibold" style={{ color: colors.primary }}>
+                  {backgroundMode === "ai" ? "AI" : t("settings.defaultBackground")}
+                </Text>
+                <ChevronRight color={colors.onSurfaceVariant} size={13} />
+              </Pressable>
+            </SettingRow>
+          </View>
+        </View>
+      </ScrollView>
+    </View>
+  )
+}
