@@ -42,7 +42,7 @@ export function HomeHeader() {
           {isDark ? <Sun color={ink} size={17} /> : <Moon color={ink} size={17} />}
         </Pressable>
         <Pressable
-          accessibilityLabel={t("home.profile")}
+          accessibilityLabel={t("home:profile")}
           accessibilityRole="button"
           className="h-10 w-10 items-center justify-center rounded-full bg-[#192231] shadow-pillowy active:opacity-70"
         >

@@ -1,0 +1,11 @@
+{
+  "title": "Settings",
+  "language": "Language",
+  "soundscape": "Soundscape",
+  "background": "Background",
+  "defaultBackground": "Default",
+  "aiBackground": "AI generated",
+  "system": "System",
+  "languageSummary": "Language: {{language}}",
+  "saveError": "Could not save the language. Please try again."
+}

@@ -1,4 +1,7 @@
-import { describe, expect, it } from "vitest"
+import { createInstance } from "i18next"
+import { i18nOptions } from "@/i18n"
+import { namespaces } from "@/i18n/config"
+import { beforeAll, describe, expect, it } from "vitest"
 
 import { defaultWorldCities, worldCities } from "@/features/home/home.data"
 import {
@@ -10,6 +13,10 @@ import {
 } from "@/features/home/home.utils"
 
 describe("world clock helpers", () => {
+  const translator = createInstance()
+  beforeAll(async () => {
+    await translator.init({ ...i18nOptions, lng: "vi" })
+  })
   const instant = new Date("2026-01-15T12:00:00.000Z")
 
   it("formats Vietnam, Japan, and China using explicit time zones", () => {
@@ -29,8 +36,8 @@ describe("world clock helpers", () => {
   })
 
   it("localizes a city's country and timezone label", () => {
-    expect(getTimeZoneLabel("tokyo", "vi")).toBe("Nhật Bản · JST")
-    expect(getTimeZoneLabel("tokyo", "en")).toBe("Japan · JST")
+    expect(getTimeZoneLabel("tokyo", translator.getFixedT("vi", namespaces))).toBe("Nhật Bản · JST")
+    expect(getTimeZoneLabel("tokyo", translator.getFixedT("en", namespaces))).toBe("Japan · JST")
   })
 
   it("formats the city's UTC offset for the selected instant", () => {

@@ -1,6 +1,8 @@
-import type { Language } from "@/store/use-global-store"
-import { translations } from "@/i18n/translations"
+import type { namespaces } from "@/i18n/config"
+import type { TFunction } from "i18next"
 import type { CityId, WorldCity } from "./home.data"
+
+export { formatClockTime } from "@/i18n/formatters"
 
 export type WorldClockCardPalette = {
   card: string
@@ -18,19 +20,8 @@ export function getSelectedWorldCities(
     .filter((city): city is WorldCity => city !== undefined)
 }
 
-export function formatClockTime(date: Date, timeZone: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale, {
-    timeZone,
-    hour: "2-digit",
-    minute: "2-digit",
-    hourCycle: "h23",
-  }).format(date)
-}
-
-export function getTimeZoneLabel(cityId: CityId, language: Language): string {
-  const city = translations[language].cities[cityId]
-
-  return `${city.country} · ${city.timezone}`
+export function getTimeZoneLabel(cityId: CityId, t: TFunction<typeof namespaces>): string {
+  return `${t(`home:cities.${cityId}.country`)} · ${t(`home:cities.${cityId}.timezone`)}`
 }
 
 export function getUtcOffsetLabel(date: Date, timeZone: string): string {

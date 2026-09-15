@@ -1,0 +1,19 @@
+{
+  "duration": "TIMER DURATION",
+  "ready": "READY",
+  "hours": "HOURS",
+  "minutes": "MINUTES",
+  "seconds": "SECONDS",
+  "start": "Start",
+  "pause": "Pause",
+  "routines": "Quick routines",
+  "nap": "Restorative nap",
+  "fika": "Tea & Fika coffee",
+  "egg": "Soft-boiled egg",
+  "meditation": "Mindful meditation",
+  "reset": "Reset timer",
+  "status": "NORDIC BREATH • STILLNESS",
+  "closeRoutines": "Close quick routines",
+  "increase": "Increase {{unit}}",
+  "decrease": "Decrease {{unit}}"
+}

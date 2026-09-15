@@ -26,22 +26,22 @@ export default function ProfileScreen() {
           </View>
 
           <View className="mt-3 flex-row justify-around rounded-[28px] bg-white py-5 shadow-pillowy dark:bg-[#1B2430]">
-            <ProfileStat label={t("screens.posts")} value="17" color={colors.onSurface} />
-            <ProfileStat label={t("screens.likes")} value="55" color={colors.onSurface} />
-            <ProfileStat label={t("screens.followers")} value="2.5k" color={colors.onSurface} />
+            <ProfileStat label={t("profile:posts")} value="17" color={colors.onSurface} />
+            <ProfileStat label={t("profile:likes")} value="55" color={colors.onSurface} />
+            <ProfileStat label={t("profile:followers")} value="2.5k" color={colors.onSurface} />
           </View>
 
           <View className="mt-3 rounded-[28px] bg-white p-5 shadow-pillowy dark:bg-[#1B2430]">
             <Text className="text-[18px] font-semibold" style={{ color: colors.onSurface }}>
-              {t("screens.about")}
+              {t("profile:about")}
             </Text>
             <Text className="mt-2 text-[13px] leading-5" style={{ color: colors.onSurfaceVariant }}>
-              {t("screens.profileDescription")}
+              {t("profile:profileDescription")}
             </Text>
           </View>
 
           <Pressable className="mt-4 items-center rounded-full bg-[#FDEEEB] py-3 active:opacity-70">
-            <Text className="text-[13px] font-semibold text-[#A73832]">{t("screens.signOut")}</Text>
+            <Text className="text-[13px] font-semibold text-[#A73832]">{t("profile:signOut")}</Text>
           </Pressable>
         </View>
       </ScrollView>

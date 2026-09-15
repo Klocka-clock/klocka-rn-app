@@ -1,9 +1,10 @@
+import { languageNames, type LanguagePreference } from "@/i18n/config"
 import { useTranslation } from "@/i18n/use-translation"
 import { useGlobalStore } from "@/store/use-global-store"
 import { themeTokens } from "@/theme/tokens"
 import { StatusBar } from "expo-status-bar"
 import { Check, ChevronRight, Moon, Palette, Sun, Volume2 } from "lucide-react-native"
-import { Pressable, ScrollView, Switch, Text, View } from "react-native"
+import { Alert, Pressable, ScrollView, Switch, Text, View } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 function SettingRow({
@@ -11,24 +12,31 @@ function SettingRow({
   label,
   description,
   children,
+  stacked = false,
 }: {
   icon: React.ReactNode
   label: string
   description: string
   children: React.ReactNode
+  stacked?: boolean
 }) {
   return (
-    <View className="flex-row items-center gap-3 border-b border-[#EAE8E3] py-4 dark:border-[#303B49]">
-      <View className="h-10 w-10 items-center justify-center rounded-2xl bg-[#EBF2FA] dark:bg-[#26384D]">
-        {icon}
+    <View className="border-b border-[#EAE8E3] py-4 dark:border-[#303B49]">
+      <View className="flex-row items-center gap-3">
+        <View className="h-10 w-10 items-center justify-center rounded-2xl bg-[#EBF2FA] dark:bg-[#26384D]">
+          {icon}
+        </View>
+        <View className="flex-1">
+          <Text className="text-[15px] font-semibold text-[#192231] dark:text-[#F2F1EC]">
+            {label}
+          </Text>
+          <Text className="mt-0.5 text-[12px] text-[#75777D] dark:text-[#C5C6CC]">
+            {description}
+          </Text>
+        </View>
+        {!stacked && children}
       </View>
-      <View className="flex-1">
-        <Text className="text-[15px] font-semibold text-[#192231] dark:text-[#F2F1EC]">
-          {label}
-        </Text>
-        <Text className="mt-0.5 text-[12px] text-[#75777D] dark:text-[#C5C6CC]">{description}</Text>
-      </View>
-      {children}
+      {stacked && <View className="mt-3">{children}</View>}
     </View>
   )
 }
@@ -59,15 +67,17 @@ function ChoicePill({
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets()
-  const { language, t } = useTranslation()
+  const { language, preference, setLanguagePreference, t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
   const soundscape = useGlobalStore((state) => state.soundscape)
   const backgroundMode = useGlobalStore((state) => state.backgroundMode)
-  const setLanguage = useGlobalStore((state) => state.setLanguage)
   const setTheme = useGlobalStore((state) => state.setTheme)
   const setSoundscape = useGlobalStore((state) => state.setSoundscape)
   const setBackgroundMode = useGlobalStore((state) => state.setBackgroundMode)
   const colors = themeTokens[theme]
+  const changeLanguage = (value: LanguagePreference) => {
+    void setLanguagePreference(value).catch(() => Alert.alert(t("error"), t("settings:saveError")))
+  }
 
   return (
     <View className="flex-1" style={{ backgroundColor: colors.background }}>
@@ -78,28 +88,34 @@ export default function SettingsScreen() {
       >
         <View className="px-5" style={{ paddingTop: Math.max(insets.top, 20) }}>
           <Text className="text-[30px] font-normal" style={{ color: colors.onSurface }}>
-            {t("settings.title")}
+            {t("settings:title")}
           </Text>
           <Text className="mt-1 text-[13px]" style={{ color: colors.onSurfaceVariant }}>
-            {t("settings.language")} · {language === "vi" ? "Tiếng Việt" : "English"}
+            {t("settings:languageSummary", { language: languageNames[language] })}
           </Text>
 
           <View className="mt-7 rounded-[30px] bg-white px-4 shadow-floating dark:bg-[#1B2430]">
             <SettingRow
-              description={t("settings.language")}
+              stacked
+              description={languageNames[language]}
               icon={<Palette color={colors.primary} size={18} />}
-              label={t("settings.language")}
+              label={t("settings:language")}
             >
-              <View className="flex-row gap-1">
+              <View className="flex-row flex-wrap justify-end gap-1">
                 <ChoicePill
-                  label="VI"
-                  selected={language === "vi"}
-                  onPress={() => setLanguage("vi")}
+                  label={t("settings:system")}
+                  selected={preference === "system"}
+                  onPress={() => changeLanguage("system")}
                 />
                 <ChoicePill
-                  label="EN"
-                  selected={language === "en"}
-                  onPress={() => setLanguage("en")}
+                  label={languageNames.vi}
+                  selected={preference === "vi"}
+                  onPress={() => changeLanguage("vi")}
+                />
+                <ChoicePill
+                  label={languageNames.en}
+                  selected={preference === "en"}
+                  onPress={() => changeLanguage("en")}
                 />
               </View>
             </SettingRow>
@@ -127,7 +143,7 @@ export default function SettingsScreen() {
             <SettingRow
               description={soundscape === "rain" ? t("soundscapes.rain") : t("soundscapes.stream")}
               icon={<Volume2 color={colors.primary} size={18} />}
-              label={t("settings.soundscape")}
+              label={t("settings:soundscape")}
             >
               <View className="flex-row gap-1">
                 <ChoicePill
@@ -146,11 +162,11 @@ export default function SettingsScreen() {
             <SettingRow
               description={
                 backgroundMode === "ai"
-                  ? t("settings.aiBackground")
-                  : t("settings.defaultBackground")
+                  ? t("settings:aiBackground")
+                  : t("settings:defaultBackground")
               }
               icon={<Palette color={colors.primary} size={18} />}
-              label={t("settings.background")}
+              label={t("settings:background")}
             >
               <Pressable
                 accessibilityRole="button"
@@ -160,7 +176,7 @@ export default function SettingsScreen() {
               >
                 {backgroundMode === "ai" && <Check color={colors.primary} size={13} />}
                 <Text className="text-[11px] font-semibold" style={{ color: colors.primary }}>
-                  {backgroundMode === "ai" ? "AI" : t("settings.defaultBackground")}
+                  {backgroundMode === "ai" ? "AI" : t("settings:defaultBackground")}
                 </Text>
                 <ChevronRight color={colors.onSurfaceVariant} size={13} />
               </Pressable>

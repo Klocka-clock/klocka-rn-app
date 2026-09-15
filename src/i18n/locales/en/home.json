@@ -1,0 +1,53 @@
+{
+  "worldTitle": "World",
+  "currentCity": "Stockholm",
+  "currentCityCountry": "Sweden",
+  "profile": "Profile",
+  "now": "Now",
+  "daylight": "Daylight",
+  "midnight": "Midnight",
+  "addCountry": "Add country",
+  "chooseCountry": "Choose a country",
+  "cities": {
+    "hoChiMinh": {
+      "country": "Vietnam",
+      "timezone": "ICT",
+      "name": "Ho Chi Minh City"
+    },
+    "stockholm": {
+      "country": "Sweden",
+      "timezone": "CET",
+      "name": "Stockholm"
+    },
+    "tokyo": {
+      "country": "Japan",
+      "timezone": "JST",
+      "name": "Tokyo"
+    },
+    "shanghai": {
+      "country": "China",
+      "timezone": "CST",
+      "name": "Shanghai"
+    },
+    "newYork": {
+      "country": "United States",
+      "timezone": "EST",
+      "name": "New York"
+    },
+    "london": {
+      "country": "United Kingdom",
+      "timezone": "GMT",
+      "name": "London"
+    },
+    "paris": {
+      "country": "France",
+      "timezone": "CET",
+      "name": "Paris"
+    },
+    "sydney": {
+      "country": "Australia",
+      "timezone": "AEST",
+      "name": "Sydney"
+    }
+  }
+}
