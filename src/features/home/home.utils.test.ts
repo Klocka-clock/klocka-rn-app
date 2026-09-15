@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest"
 
 import { defaultWorldCities } from "@/features/home/home.data"
-import { formatClockTime, getTimeZoneLabel, getUtcOffsetLabel } from "@/features/home/home.utils"
+import {
+  formatClockTime,
+  getTimeZoneLabel,
+  getUtcOffsetLabel,
+  getWorldClockCardPalette,
+} from "@/features/home/home.utils"
 
 describe("world clock helpers", () => {
   const instant = new Date("2026-01-15T12:00:00.000Z")
@@ -25,5 +30,14 @@ describe("world clock helpers", () => {
     expect(getUtcOffsetLabel(instant, "Asia/Ho_Chi_Minh")).toBe("+7h")
     expect(getUtcOffsetLabel(instant, "Asia/Tokyo")).toBe("+9h")
     expect(getUtcOffsetLabel(instant, "America/New_York")).toBe("-5h")
+  })
+
+  it("keeps dark daytime cards dark enough for light text", () => {
+    expect(getWorldClockCardPalette("dark", false)).toEqual({
+      card: "#1B2430",
+      panel: "#26384D",
+      ink: "#F2F1EC",
+      muted: "#C5C6CC",
+    })
   })
 })
