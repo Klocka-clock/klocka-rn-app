@@ -19,6 +19,7 @@ describe("useGlobalStore", () => {
       soundscape: "rain",
       language: "vi",
       backgroundMode: "default",
+      selectedWorldCityIds: ["hoChiMinh"],
     })
   })
 
@@ -30,6 +31,7 @@ describe("useGlobalStore", () => {
     expect(state.soundscape).toBe("rain")
     expect(state.language).toBe("vi")
     expect(state.backgroundMode).toBe("default")
+    expect(state.selectedWorldCityIds).toEqual(["hoChiMinh"])
   })
 
   it("updates each persisted preference through its dedicated action", () => {
@@ -40,6 +42,8 @@ describe("useGlobalStore", () => {
     state.setSoundscape("stream")
     state.setLanguage("en")
     state.setBackgroundMode("ai")
+    state.addWorldCity("tokyo")
+    state.addWorldCity("tokyo")
 
     expect(useGlobalStore.getState()).toMatchObject({
       theme: "dark",
@@ -47,6 +51,7 @@ describe("useGlobalStore", () => {
       soundscape: "stream",
       language: "en",
       backgroundMode: "ai",
+      selectedWorldCityIds: ["hoChiMinh", "tokyo"],
     })
   })
 
@@ -61,6 +66,7 @@ describe("useGlobalStore", () => {
       soundscape: "rain",
       language: "vi",
       backgroundMode: "default",
+      selectedWorldCityIds: ["hoChiMinh"],
     })
     expect(persisted).not.toHaveProperty("setTheme")
   })

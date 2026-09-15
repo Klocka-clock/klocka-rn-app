@@ -1,6 +1,22 @@
 import type { Language } from "@/store/use-global-store"
 import { translations } from "@/i18n/translations"
-import type { CityId } from "./home.data"
+import type { CityId, WorldCity } from "./home.data"
+
+export type WorldClockCardPalette = {
+  card: string
+  panel: string
+  ink: string
+  muted: string
+}
+
+export function getSelectedWorldCities(
+  selectedCityIds: readonly CityId[],
+  cities: readonly WorldCity[],
+): WorldCity[] {
+  return selectedCityIds
+    .map((cityId) => cities.find((city) => city.id === cityId))
+    .filter((city): city is WorldCity => city !== undefined)
+}
 
 export function formatClockTime(date: Date, timeZone: string, locale: string): string {
   return new Intl.DateTimeFormat(locale, {
@@ -38,4 +54,25 @@ export function getUtcOffsetLabel(date: Date, timeZone: string): string {
     : decimalHours.toFixed(1)
 
   return `${sign}${normalizedHours}h`
+}
+
+export function getWorldClockCardPalette(
+  theme: "light" | "dark",
+  isNight: boolean,
+): WorldClockCardPalette {
+  if (theme === "dark") {
+    return {
+      card: "#1B2430",
+      panel: isNight ? "#25303D" : "#26384D",
+      ink: "#F2F1EC",
+      muted: "#C5C6CC",
+    }
+  }
+
+  return {
+    card: "#FFFFFF",
+    panel: isNight ? "#E4E2DD" : "#EBF2FA",
+    ink: "#192231",
+    muted: "#75777D",
+  }
 }

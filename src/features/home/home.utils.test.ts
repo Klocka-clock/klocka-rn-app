@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest"
 
-import { defaultWorldCities } from "@/features/home/home.data"
-import { formatClockTime, getTimeZoneLabel, getUtcOffsetLabel } from "@/features/home/home.utils"
+import { defaultWorldCities, worldCities } from "@/features/home/home.data"
+import {
+  formatClockTime,
+  getTimeZoneLabel,
+  getUtcOffsetLabel,
+  getWorldClockCardPalette,
+  getSelectedWorldCities,
+} from "@/features/home/home.utils"
 
 describe("world clock helpers", () => {
   const instant = new Date("2026-01-15T12:00:00.000Z")
@@ -16,6 +22,12 @@ describe("world clock helpers", () => {
     expect(defaultWorldCities.map((city) => city.id)).toEqual(["hoChiMinh", "tokyo", "shanghai"])
   })
 
+  it("resolves selected city ids in their persisted order", () => {
+    expect(
+      getSelectedWorldCities(["hoChiMinh", "tokyo"], worldCities).map((city) => city.id),
+    ).toEqual(["hoChiMinh", "tokyo"])
+  })
+
   it("localizes a city's country and timezone label", () => {
     expect(getTimeZoneLabel("tokyo", "vi")).toBe("Nhật Bản · JST")
     expect(getTimeZoneLabel("tokyo", "en")).toBe("Japan · JST")
@@ -25,5 +37,14 @@ describe("world clock helpers", () => {
     expect(getUtcOffsetLabel(instant, "Asia/Ho_Chi_Minh")).toBe("+7h")
     expect(getUtcOffsetLabel(instant, "Asia/Tokyo")).toBe("+9h")
     expect(getUtcOffsetLabel(instant, "America/New_York")).toBe("-5h")
+  })
+
+  it("keeps dark daytime cards dark enough for light text", () => {
+    expect(getWorldClockCardPalette("dark", false)).toEqual({
+      card: "#1B2430",
+      panel: "#26384D",
+      ink: "#F2F1EC",
+      muted: "#C5C6CC",
+    })
   })
 })

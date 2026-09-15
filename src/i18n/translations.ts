@@ -7,13 +7,12 @@ export const translations = {
       worldTitle: "Thế giới",
       currentCity: "Stockholm",
       currentCityCountry: "Thụy Điển",
-      weatherDetail: "Thời tiết hiện tại",
-      degrees: "14°C",
-      weather: "Sương mù quanh đảo",
       profile: "Hồ sơ",
       now: "Bây giờ",
       daylight: "Ban ngày",
       midnight: "Nửa đêm",
+      addCountry: "Thêm quốc gia",
+      chooseCountry: "Chọn quốc gia",
     },
     modes: {
       world: "Thế giới",
@@ -85,12 +84,12 @@ export const translations = {
       worldTitle: "World",
       currentCity: "Stockholm",
       currentCityCountry: "Sweden",
-      degrees: "14°C",
-      weather: "Island mist",
       profile: "Profile",
       now: "Now",
       daylight: "Daylight",
       midnight: "Midnight",
+      addCountry: "Add country",
+      chooseCountry: "Choose a country",
     },
     modes: {
       world: "World",
@@ -163,13 +162,12 @@ export type TranslationKey =
   | "home.worldTitle"
   | "home.currentCity"
   | "home.currentCityCountry"
-  | "home.weatherDetail"
-  | "home.degrees"
-  | "home.weather"
   | "home.profile"
   | "home.now"
   | "home.daylight"
   | "home.midnight"
+  | "home.addCountry"
+  | "home.chooseCountry"
   | "modes.world"
   | "modes.timer"
   | "modes.pomodoro"

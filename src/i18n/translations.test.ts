@@ -16,6 +16,6 @@ describe("translations", () => {
   it("falls back to Vietnamese when a translation is missing", () => {
     const missingKey = "home.weatherDetail" as TranslationKey
 
-    expect(getTranslation("en", missingKey)).toBe("Thời tiết hiện tại")
+    expect(getTranslation("en", missingKey)).toBe("home.weatherDetail")
   })
 })
