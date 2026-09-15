@@ -6,6 +6,8 @@
 <img width="300" height="600" alt="simulator_screenshot_F333F1D9-C446-4048-9ECC-C61ED61F6009" src="https://github.com/user-attachments/assets/7d79f03e-7035-4e51-b198-1f459c877728" />
 <img width="300" height="600" alt="simulator_screenshot_E9261D65-22F9-4A4B-8B38-6D7702F3D9D1" src="https://github.com/user-attachments/assets/3926ebd9-be84-417a-a16b-abc3413be1be" />
 <img width="300" height="600" alt="simulator_screenshot_9A7DA31C-AA6D-48F8-AE85-4576E5A61904" src="https://github.com/user-attachments/assets/5782fe8f-6939-4668-9edf-2602da4da69a" />
+
+
 > A modern, production-ready React Native boilerplate built with Expo,
 > Expo Router, TypeScript, NativeWind, Supabase, and Clerk
 > authentication.
