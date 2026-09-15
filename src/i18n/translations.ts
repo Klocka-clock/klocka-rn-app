@@ -16,7 +16,7 @@ export const translations = {
     },
     modes: {
       world: "Thế giới",
-      timer: "Hẹn giờ",
+      timer: "Setting",
       pomodoro: "Pomodoro",
     },
     soundscapes: {
@@ -30,9 +30,7 @@ export const translations = {
     tabs: {
       world: "Thế giới",
       pomodoro: "Pomodoro",
-      timer: "Hẹn giờ",
-      alarm: "Báo thức",
-      recent: "Mới gần đây",
+      setting: "Cài đặt",
     },
     settings: {
       title: "Cài đặt",
@@ -41,6 +39,21 @@ export const translations = {
       background: "Nền giao diện",
       defaultBackground: "Mặc định",
       aiBackground: "AI tạo nền",
+    },
+    pomodoro: {
+      status: "NHỊP THỞ BẮC ÂU • TĨNH LẶNG\nNORDIC BREATH • STILLNESS",
+      ready: "CHUẨN BỊ / READY",
+      hours: "GIỜ",
+      minutes: "PHÚT",
+      seconds: "GIÂY",
+      start: "Bắt đầu",
+      pause: "Tạm dừng",
+      routines: "Mẫu nhịp sống nhanh",
+      nap: "Chợp mắt hồi sức",
+      fika: "Pha trà & Cà phê Fika",
+      egg: "Luộc trứng lòng đào",
+      meditation: "Thiền định tĩnh tâm",
+      reset: "Đặt lại bộ đếm giờ",
     },
     screens: {
       scannerTitle: "Pomodoro",
@@ -93,7 +106,7 @@ export const translations = {
     },
     modes: {
       world: "World",
-      timer: "Timer",
+      timer: "Settings",
       pomodoro: "Pomodoro",
     },
     soundscapes: {
@@ -107,9 +120,7 @@ export const translations = {
     tabs: {
       world: "World",
       pomodoro: "Pomodoro",
-      timer: "Timer",
-      alarm: "Alarm",
-      recent: "Recent",
+      setting: "Setting",
     },
     settings: {
       title: "Settings",
@@ -118,6 +129,21 @@ export const translations = {
       background: "Background",
       defaultBackground: "Default",
       aiBackground: "AI generated",
+    },
+    pomodoro: {
+      duration: "TIMER DURATION",
+      ready: "READY",
+      hours: "HOURS ",
+      minutes: "MINUTES",
+      seconds: "SECONDS",
+      start: "Start",
+      pause: "Pause",
+      routines: "Quick routines",
+      nap: "Restorative nap",
+      fika: "Tea & Fika coffee",
+      egg: "Soft-boiled egg",
+      meditation: "Mindful meditation",
+      reset: "Reset timer",
     },
     screens: {
       scannerTitle: "Pomodoro",
@@ -177,15 +203,27 @@ export type TranslationKey =
   | "themes.dark"
   | "tabs.world"
   | "tabs.pomodoro"
-  | "tabs.timer"
-  | "tabs.alarm"
-  | "tabs.recent"
+  | "tabs.setting"
   | "settings.language"
   | "settings.title"
   | "settings.soundscape"
   | "settings.background"
   | "settings.defaultBackground"
   | "settings.aiBackground"
+  | "pomodoro.status"
+  | "pomodoro.duration"
+  | "pomodoro.ready"
+  | "pomodoro.hours"
+  | "pomodoro.minutes"
+  | "pomodoro.seconds"
+  | "pomodoro.start"
+  | "pomodoro.pause"
+  | "pomodoro.routines"
+  | "pomodoro.nap"
+  | "pomodoro.fika"
+  | "pomodoro.egg"
+  | "pomodoro.meditation"
+  | "pomodoro.reset"
   | "screens.scannerTitle"
   | "screens.scannerDescription"
   | "screens.historyTitle"
