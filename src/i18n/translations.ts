@@ -43,6 +43,31 @@ export const translations = {
       defaultBackground: "Mặc định",
       aiBackground: "AI tạo nền",
     },
+    screens: {
+      scannerTitle: "Pomodoro",
+      scannerDescription: "Tập trung trong những nhịp nhỏ, đều đặn.",
+      historyTitle: "Mới gần đây",
+      historyDescription: "Các phiên thời gian của bạn sẽ xuất hiện ở đây.",
+      profileTitle: "Hồ sơ",
+      profileDescription: "Không gian thời gian cá nhân của bạn.",
+      signOut: "Đăng xuất",
+      welcome: "Chào mừng trở lại",
+      signInDescription: "Đăng nhập để tiếp tục với KLOCKA.",
+      email: "Email",
+      password: "Mật khẩu",
+      emailPlaceholder: "Nhập email của bạn",
+      passwordPlaceholder: "Nhập mật khẩu",
+      signIn: "Đăng nhập",
+      signingIn: "Đang đăng nhập…",
+      continueGoogle: "Tiếp tục với Google",
+      newToKlocka: "Mới dùng KLOCKA?",
+      createAccount: "Tạo tài khoản",
+      terms: "Bằng cách đăng nhập, bạn đồng ý với Điều khoản và Chính sách bảo mật.",
+      posts: "Bài viết",
+      likes: "Lượt thích",
+      followers: "Người theo dõi",
+      about: "Giới thiệu",
+    },
     cities: {
       hoChiMinh: { country: "Việt Nam", timezone: "ICT" },
       stockholm: { country: "Thụy Điển", timezone: "CET" },
@@ -95,6 +120,31 @@ export const translations = {
       defaultBackground: "Default",
       aiBackground: "AI generated",
     },
+    screens: {
+      scannerTitle: "Pomodoro",
+      scannerDescription: "Focus in small, steady rhythms.",
+      historyTitle: "Recent",
+      historyDescription: "Your time sessions will appear here.",
+      profileTitle: "Profile",
+      profileDescription: "Your personal time space.",
+      signOut: "Sign out",
+      welcome: "Welcome back",
+      signInDescription: "Sign in to continue with KLOCKA.",
+      email: "Email",
+      password: "Password",
+      emailPlaceholder: "Enter your email",
+      passwordPlaceholder: "Enter your password",
+      signIn: "Sign in",
+      signingIn: "Signing in…",
+      continueGoogle: "Continue with Google",
+      newToKlocka: "New to KLOCKA?",
+      createAccount: "Create an account",
+      terms: "By signing in, you agree to our Terms and Privacy Policy.",
+      posts: "Posts",
+      likes: "Likes",
+      followers: "Followers",
+      about: "About",
+    },
     cities: {
       hoChiMinh: { country: "Vietnam", timezone: "ICT" },
       stockholm: { country: "Sweden", timezone: "CET" },
@@ -138,6 +188,29 @@ export type TranslationKey =
   | "settings.background"
   | "settings.defaultBackground"
   | "settings.aiBackground"
+  | "screens.scannerTitle"
+  | "screens.scannerDescription"
+  | "screens.historyTitle"
+  | "screens.historyDescription"
+  | "screens.profileTitle"
+  | "screens.profileDescription"
+  | "screens.signOut"
+  | "screens.welcome"
+  | "screens.signInDescription"
+  | "screens.email"
+  | "screens.password"
+  | "screens.emailPlaceholder"
+  | "screens.passwordPlaceholder"
+  | "screens.signIn"
+  | "screens.signingIn"
+  | "screens.continueGoogle"
+  | "screens.newToKlocka"
+  | "screens.createAccount"
+  | "screens.terms"
+  | "screens.posts"
+  | "screens.likes"
+  | "screens.followers"
+  | "screens.about"
 
 function readTranslation(language: Language, key: TranslationKey): string | undefined {
   const [section, value] = key.split(".")
