@@ -1,5 +1,5 @@
 import type { WorldCity } from "@/features/home/home.data"
-import { formatClockTime, getTimeZoneLabel } from "@/features/home/home.utils"
+import { formatClockTime, getTimeZoneLabel, getUtcOffsetLabel } from "@/features/home/home.utils"
 import { useGlobalStore } from "@/store/use-global-store"
 import { Cloud, CloudSun, Moon, Sun, Waves } from "lucide-react-native"
 import { Text, View } from "react-native"
@@ -32,6 +32,14 @@ export function WorldClockCard({ city, now }: WorldClockCardProps) {
       style={{ backgroundColor: isDark ? "#1B2430" : "#FFFFFF" }}
     >
       <View
+        className="absolute bottom-0 right-0 top-0 rounded-l-[28px]"
+        style={{
+          backgroundColor: isNight ? (isDark ? "#25303D" : "#E4E2DD") : "#EBF2FA",
+          opacity: 0.72,
+          width: "50%",
+        }}
+      />
+      <View
         className="absolute -right-10 -top-12 h-40 w-40 rounded-full opacity-70"
         style={{ backgroundColor: isNight ? (isDark ? "#25303D" : "#E4E2DD") : "#EBF2FA" }}
       />
@@ -41,9 +49,9 @@ export function WorldClockCard({ city, now }: WorldClockCardProps) {
             <Text className="text-[16px] font-semibold" style={{ color: ink }}>
               {city.name}
             </Text>
-            <View className="rounded-full bg-[#E2EBD8] px-2 py-0.5 dark:bg-[#344235]">
+            <View className="rounded-full bg-[#F0EEE9] px-2 py-0.5 dark:bg-[#303B49]">
               <Text className="text-[9px] font-semibold" style={{ color: ink }}>
-                {city.timezoneCode}
+                {getUtcOffsetLabel(now, city.timeZone)}
               </Text>
             </View>
           </View>
@@ -60,6 +68,9 @@ export function WorldClockCard({ city, now }: WorldClockCardProps) {
         <View className="items-end">
           <Text className="text-[30px] font-light tracking-[-1px]" style={{ color: ink }}>
             {formatClockTime(now, city.timeZone, language === "vi" ? "vi-VN" : "en-US")}
+          </Text>
+          <Text className="text-[9px] uppercase" style={{ color: muted }}>
+            {city.timezoneCode}
           </Text>
           <View className="flex-row items-center gap-1">
             <WeatherIcon color={muted} size={11} />
