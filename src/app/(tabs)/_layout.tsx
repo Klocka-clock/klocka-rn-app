@@ -22,19 +22,19 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: t("tabs.timer"),
+          title: t("tabs.setting"),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: t("tabs.alarm"),
+          href: null,
         }}
       />
       <Tabs.Screen
         name="signal-history"
         options={{
-          title: t("tabs.recent"),
+          href: null,
         }}
       />
     </Tabs>

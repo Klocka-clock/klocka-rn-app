@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "KlockaClock",
-    "slug": "klocka-clock-app",
+    "slug": "klocka-rn-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "klocka-rn-app",
@@ -9,7 +9,10 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.klocka-rn-app"
+      "bundleIdentifier": "com.quindarts.klockaclock.dev",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -20,9 +23,8 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-       "permissions": [
-      ],
-      "package": "com.anonymous.klocka-rn-app"
+      "permissions": [],
+      "package": "com.quindarts.klockaclock.dev"
     },
     "web": {
       "bundler": "metro",
@@ -48,6 +50,19 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "1e0b517c-fcbb-4460-89bf-53fd4c572f99"
+      }
+    },
+    "owner": "quindarts",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1e0b517c-fcbb-4460-89bf-53fd4c572f99"
     }
   }
 }
