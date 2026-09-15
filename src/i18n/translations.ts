@@ -36,6 +36,7 @@ export const translations = {
       recent: "Mới gần đây",
     },
     settings: {
+      title: "Cài đặt",
       language: "Ngôn ngữ",
       soundscape: "Âm thanh nền",
       background: "Nền giao diện",
@@ -87,6 +88,7 @@ export const translations = {
       recent: "Recent",
     },
     settings: {
+      title: "Settings",
       language: "Language",
       soundscape: "Soundscape",
       background: "Background",
@@ -131,6 +133,7 @@ export type TranslationKey =
   | "tabs.alarm"
   | "tabs.recent"
   | "settings.language"
+  | "settings.title"
   | "settings.soundscape"
   | "settings.background"
   | "settings.defaultBackground"
