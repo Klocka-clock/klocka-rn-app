@@ -31,12 +31,6 @@ export default function TabsLayout() {
           title: t("tabs.alarm"),
         }}
       />
-      <Tabs.Screen
-        name="signal-history"
-        options={{
-          title: t("tabs.recent"),
-        }}
-      />
     </Tabs>
   )
 }

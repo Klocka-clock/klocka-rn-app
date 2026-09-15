@@ -6,6 +6,8 @@ export type AppMode = "world" | "timer" | "pomodoro"
 export type Soundscape = "rain" | "stream"
 export type Language = "vi" | "en"
 export type BackgroundMode = "default" | "ai"
+export type PomodoroOrientation = "portrait" | "landscape"
+export type PomodoroBackground = "aurora" | "mist" | "linen"
 export type PrimaryCityId =
   | "hoChiMinh"
   | "tokyo"
@@ -24,6 +26,8 @@ export type GlobalState = {
   language: Language
   backgroundMode: BackgroundMode
   selectedWorldCityIds: PrimaryCityId[]
+  pomodoroOrientation: PomodoroOrientation
+  pomodoroBackground: PomodoroBackground
   setTheme: (theme: GlobalState["theme"]) => void
   setHasSeenOnboarding: (value: boolean) => void
   setMode: (mode: AppMode) => void
@@ -32,6 +36,8 @@ export type GlobalState = {
   setBackgroundMode: (backgroundMode: BackgroundMode) => void
   setSelectedWorldCityIds: (selectedWorldCityIds: PrimaryCityId[]) => void
   addWorldCity: (cityId: PrimaryCityId) => void
+  setPomodoroOrientation: (orientation: PomodoroOrientation) => void
+  setPomodoroBackground: (background: PomodoroBackground) => void
 }
 
 export type PersistedGlobalState = Pick<
@@ -43,6 +49,8 @@ export type PersistedGlobalState = Pick<
   | "language"
   | "backgroundMode"
   | "selectedWorldCityIds"
+  | "pomodoroOrientation"
+  | "pomodoroBackground"
 >
 
 export function getPersistedGlobalState(state: GlobalState): PersistedGlobalState {
@@ -54,6 +62,8 @@ export function getPersistedGlobalState(state: GlobalState): PersistedGlobalStat
     language: state.language,
     backgroundMode: state.backgroundMode,
     selectedWorldCityIds: state.selectedWorldCityIds,
+    pomodoroOrientation: state.pomodoroOrientation,
+    pomodoroBackground: state.pomodoroBackground,
   }
 }
 
@@ -67,6 +77,8 @@ export const useGlobalStore = create<GlobalState>()(
       language: "vi",
       backgroundMode: "default",
       selectedWorldCityIds: ["hoChiMinh"],
+      pomodoroOrientation: "portrait",
+      pomodoroBackground: "aurora",
       setTheme: (theme) => set({ theme }),
       setHasSeenOnboarding: (hasSeenOnboarding) => set({ hasSeenOnboarding }),
       setMode: (mode) => set({ mode }),
@@ -80,6 +92,8 @@ export const useGlobalStore = create<GlobalState>()(
             ? state
             : { selectedWorldCityIds: [...state.selectedWorldCityIds, cityId] },
         ),
+      setPomodoroOrientation: (pomodoroOrientation) => set({ pomodoroOrientation }),
+      setPomodoroBackground: (pomodoroBackground) => set({ pomodoroBackground }),
     }),
     {
       name: "klocka-global-state",

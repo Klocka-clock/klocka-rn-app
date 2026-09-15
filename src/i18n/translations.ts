@@ -14,6 +14,21 @@ export const translations = {
       addCountry: "Thêm quốc gia",
       chooseCountry: "Chọn quốc gia",
     },
+    pomodoro: {
+      focusRhythm: "NHỊP THỞ BẮC ÂU · TĨNH LẶNG",
+      focusTimer: "THỜI LƯỢNG TẬP TRUNG",
+      start: "BẮT ĐẦU ĐẾM NGƯỢC",
+      pause: "TẠM DỪNG",
+      reset: "Đặt lại",
+      presets: "Mẫu nhịp sống nhanh",
+      rest: "Chợp mắt hồi sức",
+      coffee: "Pha trà & Cà phê Fika",
+      meditate: "Thiền định tĩnh tâm",
+      rotate: "Xoay màn hình",
+      background: "Nền",
+      chooseBackground: "Chọn background",
+      backgrounds: { aurora: "Cực quang", mist: "Sương sớm", linen: "Vải linen" },
+    },
     modes: {
       world: "Thế giới",
       timer: "Hẹn giờ",
@@ -154,6 +169,21 @@ export const translations = {
       paris: { country: "France", timezone: "CET" },
       sydney: { country: "Australia", timezone: "AEST" },
     },
+    pomodoro: {
+      focusRhythm: "NORDIC BREATH · QUIET FOCUS",
+      focusTimer: "FOCUS DURATION",
+      start: "START COUNTDOWN",
+      pause: "PAUSE",
+      reset: "Reset",
+      presets: "Quick rhythm presets",
+      rest: "Restful power nap",
+      coffee: "Fika tea & coffee",
+      meditate: "Mindful meditation",
+      rotate: "Rotate screen",
+      background: "Background",
+      chooseBackground: "Choose background",
+      backgrounds: { aurora: "Aurora", mist: "Morning mist", linen: "Linen" },
+    },
   },
 } as const
 
@@ -168,6 +198,21 @@ export type TranslationKey =
   | "home.midnight"
   | "home.addCountry"
   | "home.chooseCountry"
+  | "pomodoro.focusRhythm"
+  | "pomodoro.focusTimer"
+  | "pomodoro.start"
+  | "pomodoro.pause"
+  | "pomodoro.reset"
+  | "pomodoro.presets"
+  | "pomodoro.rest"
+  | "pomodoro.coffee"
+  | "pomodoro.meditate"
+  | "pomodoro.rotate"
+  | "pomodoro.background"
+  | "pomodoro.chooseBackground"
+  | "pomodoro.backgrounds.aurora"
+  | "pomodoro.backgrounds.mist"
+  | "pomodoro.backgrounds.linen"
   | "modes.world"
   | "modes.timer"
   | "modes.pomodoro"
