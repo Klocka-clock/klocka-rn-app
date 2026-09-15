@@ -19,6 +19,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        nordic: {
+          "midnight": "#192231",
+          "linen": "#F7F5F0",
+          "snow": "#FFFFFF",
+          "dimma": "#EBF2FA",
+          "lichen": "#E2EBD8",
+          "lingonberry": "#D95D54",
+          "amber": "#E69A58",
+          "fjord": "#0E141D",
+          "surface": "#FBF9F4",
+          "surface-dim": "#DBDAD5",
+          "surface-container": "#F0EEE9",
+          "surface-container-high": "#EAE8E3",
+          "surface-container-highest": "#E4E2DD",
+        },
         primary: {
           0: "rgb(var(--color-primary-0)/<alpha-value>)",
           50: "rgb(var(--color-primary-50)/<alpha-value>)",
@@ -175,6 +190,7 @@ module.exports = {
         },
       },
       fontFamily: {
+        "sans": ["Plus Jakarta Sans", "sans-serif"],
         "heading": undefined,
         "body": undefined,
         "mono": undefined,
@@ -190,6 +206,9 @@ module.exports = {
       fontSize: {
         "2xs": "10px",
       },
+      borderRadius: {
+        squircle: "2rem",
+      },
       boxShadow: {
         "hard-1": "-2px 2px 8px 0px rgba(38, 38, 38, 0.20)",
         "hard-2": "0px 3px 10px 0px rgba(38, 38, 38, 0.20)",
@@ -200,6 +219,10 @@ module.exports = {
         "soft-2": "0px 0px 20px rgba(38, 38, 38, 0.2)",
         "soft-3": "0px 0px 30px rgba(38, 38, 38, 0.1)",
         "soft-4": "0px 0px 40px rgba(38, 38, 38, 0.1)",
+        "pillowy":
+          "0 4px 12px -2px rgba(25, 34, 49, 0.04), 0 1px 3px 0 rgba(25, 34, 49, 0.02), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9)",
+        "floating":
+          "0 12px 32px -4px rgba(25, 34, 49, 0.06), 0 4px 12px -2px rgba(25, 34, 49, 0.03), inset 0 2px 2px 0 rgba(255, 255, 255, 0.8)",
       },
     },
   },
