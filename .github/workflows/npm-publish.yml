@@ -40,14 +40,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: yarn
-          cache-dependency-path: yarn.lock
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Enable Yarn 4 through Corepack
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.1 --activate
 
-      - name: Show Yarn version
-        run: yarn --version
+      - name: Verify runtime versions
+        run: |
+          node --version
+          yarn --version
 
       - name: Install dependencies
         run: yarn install --immutable
