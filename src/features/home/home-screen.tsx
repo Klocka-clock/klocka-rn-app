@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar"
-import { useEffect, useMemo, useState } from "react"
-import { Modal, Pressable, ScrollView, Text, View } from "react-native"
+import { useEffect, useMemo, useRef, useState } from "react"
+import { Animated, Easing, Modal, Pressable, ScrollView, Text, View } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { useGlobalStore } from "@/store/use-global-store"
 import { themeTokens } from "@/theme/tokens"
@@ -20,6 +20,7 @@ export function HomeScreen() {
   const addWorldCity = useGlobalStore((state) => state.addWorldCity)
   const [now, setNow] = useState(() => new Date())
   const [isCountryPickerVisible, setCountryPickerVisible] = useState(false)
+  const countrySheetY = useRef(new Animated.Value(320)).current
   const colors = themeTokens[theme]
   const currentCity = worldCities[0]
   const cityCards = useMemo(
@@ -32,6 +33,18 @@ export function HomeScreen() {
 
     return () => clearInterval(timer)
   }, [])
+
+  useEffect(() => {
+    if (isCountryPickerVisible) {
+      countrySheetY.setValue(320)
+      Animated.timing(countrySheetY, {
+        toValue: 0,
+        duration: 280,
+        easing: Easing.out(Easing.cubic),
+        useNativeDriver: true,
+      }).start()
+    }
+  }, [countrySheetY, isCountryPickerVisible])
 
   return (
     <View className="flex-1" style={{ backgroundColor: colors.background }}>
@@ -78,15 +91,22 @@ export function HomeScreen() {
         </View>
       </ScrollView>
       <Modal
-        animationType="slide"
+        animationType="none"
         transparent
         visible={isCountryPickerVisible}
         onRequestClose={() => setCountryPickerVisible(false)}
       >
-        <View className="flex-1 justify-end bg-black/30">
-          <View
+        <Pressable
+          className="flex-1 justify-end bg-black/30"
+          onPress={() => setCountryPickerVisible(false)}
+        >
+          <Animated.View
             className="rounded-t-[32px] px-5 pb-8 pt-6"
-            style={{ backgroundColor: colors.surface }}
+            onStartShouldSetResponder={() => true}
+            style={[
+              { backgroundColor: colors.surface },
+              { transform: [{ translateY: countrySheetY }] },
+            ]}
           >
             <View className="mb-5 flex-row items-center justify-between">
               <Text className="text-[20px] font-semibold" style={{ color: colors.onSurface }}>
@@ -131,8 +151,8 @@ export function HomeScreen() {
                 </Pressable>
               )
             })}
-          </View>
-        </View>
+          </Animated.View>
+        </Pressable>
       </Modal>
     </View>
   )
