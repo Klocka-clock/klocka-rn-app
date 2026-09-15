@@ -1,13 +1,13 @@
-import { History, Hourglass, House, Timer, Volume2 } from "lucide-react-native"
+import { AlarmClock, Flower2, Globe2, History, Hourglass } from "lucide-react-native"
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs"
 import { Pressable, Text, View } from "react-native"
 import { useTranslation } from "@/i18n/use-translation"
 
 const iconByRoute = {
-  "index": House,
-  "scanner": Volume2,
-  "settings": Timer,
-  "profile": Hourglass,
+  "index": Globe2,
+  "scanner": Flower2,
+  "settings": Hourglass,
+  "profile": AlarmClock,
   "signal-history": History,
 } as const
 
@@ -26,7 +26,7 @@ export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarP
       <View className="flex-row items-end justify-around">
         {state.routes.map((route, index) => {
           const isFocused = state.index === index
-          const Icon = iconByRoute[route.name as keyof typeof iconByRoute] ?? House
+          const Icon = iconByRoute[route.name as keyof typeof iconByRoute] ?? Globe2
           const color = isFocused ? "#192231" : "#9A9CA0"
 
           return (

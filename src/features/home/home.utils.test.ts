@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 
 import { defaultWorldCities } from "@/features/home/home.data"
-import { formatClockTime, getTimeZoneLabel } from "@/features/home/home.utils"
+import { formatClockTime, getTimeZoneLabel, getUtcOffsetLabel } from "@/features/home/home.utils"
 
 describe("world clock helpers", () => {
   const instant = new Date("2026-01-15T12:00:00.000Z")
@@ -19,5 +19,11 @@ describe("world clock helpers", () => {
   it("localizes a city's country and timezone label", () => {
     expect(getTimeZoneLabel("tokyo", "vi")).toBe("Nhật Bản · JST")
     expect(getTimeZoneLabel("tokyo", "en")).toBe("Japan · JST")
+  })
+
+  it("formats the city's UTC offset for the selected instant", () => {
+    expect(getUtcOffsetLabel(instant, "Asia/Ho_Chi_Minh")).toBe("+7h")
+    expect(getUtcOffsetLabel(instant, "Asia/Tokyo")).toBe("+9h")
+    expect(getUtcOffsetLabel(instant, "America/New_York")).toBe("-5h")
   })
 })
