@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --klocka-surface: #fbf9f4;
+    --klocka-on-surface: #1b1c19;
+    --klocka-primary: #192231;
+    --klocka-wave-blue: #ebf2fa;
+    --klocka-wave-green: #e2ebd8;
+  }
+
+  .dark {
+    --klocka-surface: #0e141d;
+    --klocka-on-surface: #f2f1ec;
+    --klocka-primary: #bec7db;
+    --klocka-wave-blue: #26384d;
+    --klocka-wave-green: #344235;
+  }
+}
