@@ -14,11 +14,13 @@ const iconByRoute = {
 export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarProps) {
   const { t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
-  const labels = {
-    index: t("tabs.world"),
-    scanner: t("tabs.pomodoro"),
-    settings: t("tabs.setting"),
-  }
+  const labels = [
+    t("navigation:world"),
+    t("navigation:pomodoro"),
+    t("navigation:timer"),
+    t("navigation:alarm"),
+    t("navigation:recent"),
+  ]
 
   return (
     <View className="border-t border-[#EAE8E3] bg-[#FBF9F4] px-2 pb-2 pt-2 dark:border-[#303B49] dark:bg-[#0E141D]">

@@ -1,0 +1,53 @@
+{
+  "worldTitle": "Thế giới",
+  "currentCity": "Stockholm",
+  "currentCityCountry": "Thụy Điển",
+  "profile": "Hồ sơ",
+  "now": "Bây giờ",
+  "daylight": "Ban ngày",
+  "midnight": "Nửa đêm",
+  "addCountry": "Thêm quốc gia",
+  "chooseCountry": "Chọn quốc gia",
+  "cities": {
+    "hoChiMinh": {
+      "country": "Việt Nam",
+      "timezone": "ICT",
+      "name": "Hồ Chí Minh"
+    },
+    "stockholm": {
+      "country": "Thụy Điển",
+      "timezone": "CET",
+      "name": "Stockholm"
+    },
+    "tokyo": {
+      "country": "Nhật Bản",
+      "timezone": "JST",
+      "name": "Tokyo"
+    },
+    "shanghai": {
+      "country": "Trung Quốc",
+      "timezone": "CST",
+      "name": "Thượng Hải"
+    },
+    "newYork": {
+      "country": "Hoa Kỳ",
+      "timezone": "EST",
+      "name": "New York"
+    },
+    "london": {
+      "country": "Vương quốc Anh",
+      "timezone": "GMT",
+      "name": "London"
+    },
+    "paris": {
+      "country": "Pháp",
+      "timezone": "CET",
+      "name": "Paris"
+    },
+    "sydney": {
+      "country": "Úc",
+      "timezone": "AEST",
+      "name": "Sydney"
+    }
+  }
+}

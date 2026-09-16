@@ -1,0 +1,21 @@
+{
+  "brand": "KLOCKA",
+  "modes": {
+    "world": "World",
+    "timer": "Settings",
+    "pomodoro": "Pomodoro"
+  },
+  "soundscapes": {
+    "rain": "Forest rain",
+    "stream": "Running stream"
+  },
+  "themes": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "close": "Close",
+  "error": "Something went wrong",
+  "notFound": "This screen does not exist.",
+  "goHome": "Go to home screen",
+  "modalTitle": "Information"
+}

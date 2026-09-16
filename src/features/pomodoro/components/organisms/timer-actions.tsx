@@ -1,7 +1,7 @@
 import { nordicTokens, type ThemeTokens } from "@/theme/tokens"
 import { ListChecks, Play, RotateCcw, Waves } from "lucide-react-native"
 import { Pressable, View } from "react-native"
-import { BilingualText } from "../atoms/bilingual-text"
+import { LocalizedText } from "../atoms/localized-text"
 
 export function TimerActions({
   running,
@@ -37,7 +37,7 @@ export function TimerActions({
         ) : (
           <Play color="#FFFFFF" fill="#FFFFFF" size={22} />
         )}
-        <BilingualText
+        <LocalizedText
           className="ml-4 text-[16px] font-semibold tracking-[0.3px]"
           color="#FFFFFF"
           value={running ? pauseLabel : startLabel}

@@ -1,0 +1,21 @@
+{
+  "brand": "KLOCKA",
+  "modes": {
+    "world": "Thế giới",
+    "timer": "Cài đặt",
+    "pomodoro": "Pomodoro"
+  },
+  "soundscapes": {
+    "rain": "Tiếng mưa rừng",
+    "stream": "Tiếng suối"
+  },
+  "themes": {
+    "light": "Sáng",
+    "dark": "Tối"
+  },
+  "close": "Đóng",
+  "error": "Có lỗi xảy ra",
+  "notFound": "Không tìm thấy màn hình này.",
+  "goHome": "Về màn hình chính",
+  "modalTitle": "Cửa sổ thông tin"
+}

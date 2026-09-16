@@ -1,3 +1,4 @@
+import { LocalizationProvider } from "@/i18n/provider"
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider"
 import { Redirect, Stack } from "expo-router"
 import { StatusBar } from "expo-status-bar"
@@ -20,7 +21,7 @@ function RootLayoutNav() {
   return <Redirect href="/(tabs)" />
 }
 
-export default function RootLayout() {
+function AppLayout() {
   const theme = useGlobalStore((state) => state.theme)
 
   const app = (
@@ -49,5 +50,13 @@ export default function RootLayout() {
     <PostHogProvider apiKey={POSTHOG_API_KEY} options={{ host: POSTHOG_HOST }} autocapture={false}>
       {app}
     </PostHogProvider>
+  )
+}
+
+export default function RootLayout() {
+  return (
+    <LocalizationProvider>
+      <AppLayout />
+    </LocalizationProvider>
   )
 }

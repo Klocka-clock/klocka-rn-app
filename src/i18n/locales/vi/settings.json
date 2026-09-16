@@ -1,0 +1,11 @@
+{
+  "title": "Cài đặt",
+  "language": "Ngôn ngữ",
+  "soundscape": "Âm thanh nền",
+  "background": "Nền giao diện",
+  "defaultBackground": "Mặc định",
+  "aiBackground": "AI tạo nền",
+  "system": "Theo hệ thống",
+  "languageSummary": "Ngôn ngữ: {{language}}",
+  "saveError": "Không lưu được ngôn ngữ. Vui lòng thử lại."
+}

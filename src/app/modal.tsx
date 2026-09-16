@@ -1,12 +1,14 @@
+import { useTranslation } from "@/i18n/use-translation"
 import { Link } from "expo-router"
 import { Text, View } from "react-native"
 
 export default function ModalScreen() {
+  const { t } = useTranslation()
   return (
     <View>
-      <Text>This is a modal</Text>
+      <Text>{t("modalTitle")}</Text>
       <Link href="/" dismissTo>
-        <Text>Go to home screen</Text>
+        <Text>{t("goHome")}</Text>
       </Link>
     </View>
   )

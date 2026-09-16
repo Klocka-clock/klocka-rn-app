@@ -1,0 +1,76 @@
+name: Expo CI
+
+on:
+  push:
+    branches:
+      - develop
+      - staging
+      - main
+
+  pull_request:
+    branches:
+      - develop
+      - staging
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: expo-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-check:
+    name: Quality Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      CI: true
+      EXPO_NO_TELEMETRY: 1
+      APP_VARIANT: development
+      EXPO_PUBLIC_API_URL: https://example.invalid
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Enable Yarn 4 through Corepack
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.1 --activate
+
+      - name: Verify runtime versions
+        run: |
+          node --version
+          yarn --version
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Validate Expo dependencies
+        run: yarn dlx expo-doctor
+
+      - name: Run ESLint
+        run: yarn lint
+
+      - name: Check TypeScript
+        run: yarn tsc --noEmit
+
+      - name: Run tests when configured
+        shell: bash
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.test ? 0 : 1)"; then
+            yarn test
+          else
+            echo "No test script configured; skipping tests."
+          fi
+
+      - name: Verify Expo bundle
+        run: yarn expo export --platform all --output-dir dist

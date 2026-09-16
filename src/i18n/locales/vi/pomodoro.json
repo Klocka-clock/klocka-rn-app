@@ -1,0 +1,19 @@
+{
+  "status": "NHỊP THỞ BẮC ÂU • TĨNH LẶNG",
+  "ready": "CHUẨN BỊ",
+  "hours": "GIỜ",
+  "minutes": "PHÚT",
+  "seconds": "GIÂY",
+  "start": "Bắt đầu",
+  "pause": "Tạm dừng",
+  "routines": "Mẫu nhịp sống nhanh",
+  "nap": "Chợp mắt hồi sức",
+  "fika": "Pha trà & Cà phê Fika",
+  "egg": "Luộc trứng lòng đào",
+  "meditation": "Thiền định tĩnh tâm",
+  "reset": "Đặt lại bộ đếm giờ",
+  "duration": "THỜI GIAN HẸN GIỜ",
+  "closeRoutines": "Đóng danh sách mẫu",
+  "increase": "Tăng {{unit}}",
+  "decrease": "Giảm {{unit}}"
+}

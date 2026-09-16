@@ -74,22 +74,22 @@ export function PomodoroScreen() {
             colors={colors}
             duration={duration}
             labels={{
-              duration: t("pomodoro.duration"),
-              ready: t("pomodoro.ready"),
-              hours: t("pomodoro.hours"),
-              minutes: t("pomodoro.minutes"),
-              seconds: t("pomodoro.seconds"),
+              duration: t("pomodoro:duration"),
+              ready: t("pomodoro:ready"),
+              hours: t("pomodoro:hours"),
+              minutes: t("pomodoro:minutes"),
+              seconds: t("pomodoro:seconds"),
             }}
             remaining={remaining}
             onAdjust={updateDuration}
           />
           <TimerActions
             colors={colors}
-            pauseLabel={t("pomodoro.pause")}
-            resetLabel={t("pomodoro.reset")}
-            routinesLabel={t("pomodoro.routines")}
+            pauseLabel={t("pomodoro:pause")}
+            resetLabel={t("pomodoro:reset")}
+            routinesLabel={t("pomodoro:routines")}
             running={running}
-            startLabel={t("pomodoro.start")}
+            startLabel={t("pomodoro:start")}
             onReset={() => {
               setRemaining(duration)
               setRunning(false)
@@ -101,12 +101,12 @@ export function PomodoroScreen() {
       </ScrollView>
       <RoutinesModal
         colors={colors}
-        closeLabel="Close quick routines"
+        closeLabel={t("pomodoro:closeRoutines")}
         insetsBottom={insets.bottom}
         getLabel={t}
         routines={routines}
         sheetY={routineSheetY}
-        title={t("pomodoro.routines")}
+        title={t("pomodoro:routines")}
         visible={showRoutines}
         onClose={() => setShowRoutines(false)}
         onSelect={selectRoutine}
