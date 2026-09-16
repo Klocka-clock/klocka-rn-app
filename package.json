@@ -89,6 +89,9 @@
     "vitest": "^5.0.0"
   },
   "private": true,
+  "resolutions": {
+    "react-native-svg": "15.12.1"
+  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,md}": [
       "prettier --write",
