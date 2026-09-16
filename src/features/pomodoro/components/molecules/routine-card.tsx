@@ -3,7 +3,7 @@ import { Pressable, Text, View } from "react-native"
 import type { ThemeTokens } from "@/theme/tokens"
 import type { Routine } from "../../pomodoro.data"
 import { formatDuration } from "../../pomodoro.utils"
-import { BilingualText } from "../atoms/bilingual-text"
+import { LocalizedText } from "../atoms/localized-text"
 
 export function RoutineCard({
   routine,
@@ -28,7 +28,7 @@ export function RoutineCard({
       <View className="h-14 w-14 items-center justify-center rounded-[20px] bg-[#F0EEE9] dark:bg-[#25303D]">
         <Icon color={colors.primary} size={25} strokeWidth={1.8} />
       </View>
-      <BilingualText
+      <LocalizedText
         className="ml-4 flex-1 text-[18px] font-medium"
         color={colors.onSurface}
         value={label}

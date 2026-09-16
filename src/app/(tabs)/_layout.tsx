@@ -10,31 +10,31 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: t("tabs.world"),
+          title: t("navigation:world"),
         }}
       />
       <Tabs.Screen
         name="scanner"
         options={{
-          title: t("tabs.pomodoro"),
+          title: t("navigation:pomodoro"),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: t("tabs.timer"),
+          title: t("navigation:timer"),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: t("tabs.alarm"),
+          title: t("navigation:alarm"),
         }}
       />
       <Tabs.Screen
         name="signal-history"
         options={{
-          title: t("tabs.recent"),
+          title: t("navigation:recent"),
         }}
       />
     </Tabs>

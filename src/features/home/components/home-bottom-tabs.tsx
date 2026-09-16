@@ -16,11 +16,11 @@ export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarP
   const { t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
   const labels = [
-    t("tabs.world"),
-    t("tabs.pomodoro"),
-    t("tabs.timer"),
-    t("tabs.alarm"),
-    t("tabs.recent"),
+    t("navigation:world"),
+    t("navigation:pomodoro"),
+    t("navigation:timer"),
+    t("navigation:alarm"),
+    t("navigation:recent"),
   ]
 
   return (

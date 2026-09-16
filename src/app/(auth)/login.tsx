@@ -34,13 +34,13 @@ export default function LoginScreen() {
               className="mt-6 text-center text-[32px] font-normal"
               style={{ color: colors.onSurface }}
             >
-              {t("screens.welcome")}
+              {t("auth:welcome")}
             </Text>
             <Text
               className="mt-2 max-w-[290px] text-center text-[14px] leading-6"
               style={{ color: colors.onSurfaceVariant }}
             >
-              {t("screens.signInDescription")}
+              {t("auth:signInDescription")}
             </Text>
           </View>
 
@@ -48,14 +48,14 @@ export default function LoginScreen() {
             <View className="gap-5">
               <View className="gap-2">
                 <Text className="text-[13px] font-semibold" style={{ color: colors.onSurface }}>
-                  {t("screens.email")}
+                  {t("auth:email")}
                 </Text>
                 <Input>
                   <InputField
                     autoCapitalize="none"
                     autoComplete="email"
                     keyboardType="email-address"
-                    placeholder={t("screens.emailPlaceholder")}
+                    placeholder={t("auth:emailPlaceholder")}
                     value={emailAddress}
                     onChangeText={setEmailAddress}
                   />
@@ -64,11 +64,11 @@ export default function LoginScreen() {
 
               <View className="gap-2">
                 <Text className="text-[13px] font-semibold" style={{ color: colors.onSurface }}>
-                  {t("screens.password")}
+                  {t("auth:password")}
                 </Text>
                 <Input>
                   <InputField
-                    placeholder={t("screens.passwordPlaceholder")}
+                    placeholder={t("auth:passwordPlaceholder")}
                     secureTextEntry
                     value={password}
                     onChangeText={setPassword}
@@ -77,28 +77,28 @@ export default function LoginScreen() {
               </View>
 
               <Button className="mt-2 rounded-full" onPress={() => router.replace("/(tabs)")}>
-                <ButtonText>{t("screens.signIn")}</ButtonText>
+                <ButtonText>{t("auth:signIn")}</ButtonText>
               </Button>
 
               <Button action="secondary" className="rounded-full" variant="outline">
-                <ButtonText>{t("screens.continueGoogle")}</ButtonText>
+                <ButtonText>{t("auth:continueGoogle")}</ButtonText>
               </Button>
             </View>
           </View>
 
           <View className="mt-6 flex-row items-center justify-center gap-1">
             <Text className="text-[13px]" style={{ color: colors.onSurfaceVariant }}>
-              {t("screens.newToKlocka")}
+              {t("auth:newToKlocka")}
             </Text>
             <Button action="primary" className="px-1" size="sm" variant="link">
-              <ButtonText>{t("screens.createAccount")}</ButtonText>
+              <ButtonText>{t("auth:createAccount")}</ButtonText>
             </Button>
           </View>
           <Text
             className="mt-5 text-center text-[11px] leading-4"
             style={{ color: colors.outline }}
           >
-            {t("screens.terms")}
+            {t("auth:terms")}
           </Text>
         </View>
       </ScrollView>

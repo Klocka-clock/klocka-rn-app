@@ -2,7 +2,7 @@ import { nordicTokens, type ThemeTokens } from "@/theme/tokens"
 import { Coffee } from "lucide-react-native"
 import { Text, View } from "react-native"
 import { formatDuration, type DurationUnit } from "../../pomodoro.utils"
-import { BilingualText } from "../atoms/bilingual-text"
+import { LocalizedText } from "../atoms/localized-text"
 import { Waveform } from "../atoms/waveform"
 import { DurationControl } from "../molecules/duration-control"
 
@@ -25,14 +25,14 @@ export function TimerCard({
       style={nordicTokens.shadows.floating}
     >
       <View className="flex-row items-start justify-between">
-        <BilingualText
+        <LocalizedText
           className="text-[16px] font-semibold tracking-[0.6px]"
           color={colors.onSurface}
           value={labels.duration}
         />
         <View className="flex-row items-center rounded-full bg-[#F0EEE9] px-3 py-2 dark:bg-[#25303D]">
           <Coffee color={colors.onSurfaceVariant} size={16} />
-          <BilingualText
+          <LocalizedText
             className="ml-2 text-[12px] font-semibold"
             color={colors.onSurfaceVariant}
             value={labels.ready}

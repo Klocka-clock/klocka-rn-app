@@ -20,8 +20,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-       "permissions": [
-      ],
+      "permissions": [],
       "package": "com.anonymous.klocka-rn-app"
     },
     "web": {
@@ -31,6 +30,9 @@
     },
     "plugins": [
       "expo-router",
+      "expo-font",
+      "expo-secure-store",
+      "expo-web-browser",
       [
         "expo-splash-screen",
         {
@@ -43,7 +45,16 @@
           }
         }
       ],
-      "expo-notifications"
+      "expo-notifications",
+      [
+        "expo-localization",
+        {
+          "supportedLocales": {
+            "ios": ["vi", "en"],
+            "android": ["vi", "en"]
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

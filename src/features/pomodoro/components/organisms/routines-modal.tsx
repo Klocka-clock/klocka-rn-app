@@ -1,7 +1,7 @@
 import { Animated, Modal, Pressable, Text, View } from "react-native"
 import type { ThemeTokens } from "@/theme/tokens"
 import type { Routine } from "../../pomodoro.data"
-import { BilingualText } from "../atoms/bilingual-text"
+import { LocalizedText } from "../atoms/localized-text"
 import { RoutineCard } from "../molecules/routine-card"
 
 export function RoutinesModal({
@@ -39,7 +39,7 @@ export function RoutinesModal({
           ]}
         >
           <View className="mb-5 flex-row items-center justify-between">
-            <BilingualText
+            <LocalizedText
               className="text-[25px] font-semibold"
               color={colors.onSurface}
               value={title}

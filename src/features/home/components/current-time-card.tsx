@@ -10,7 +10,7 @@ type CurrentTimeCardProps = {
 }
 
 export function CurrentTimeCard({ city, now }: CurrentTimeCardProps) {
-  const { language } = useTranslation()
+  const { locale, t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
   const isDark = theme === "dark"
   const ink = isDark ? "#F2F1EC" : "#192231"
@@ -27,10 +27,10 @@ export function CurrentTimeCard({ city, now }: CurrentTimeCardProps) {
       <View className="z-10 flex-row items-start justify-between">
         <View>
           <Text className="text-[25px] font-normal" style={{ color: ink }}>
-            {city.name}
+            {t(`home:cities.${city.id}.name`)}
           </Text>
           <Text className="mt-0.5 text-[12px]" style={{ color: muted }}>
-            {getTimeZoneLabel(city.id, language)}
+            {getTimeZoneLabel(city.id, t)}
           </Text>
         </View>
         <Text className="mt-1 text-[11px]" style={{ color: muted }}>
@@ -43,7 +43,7 @@ export function CurrentTimeCard({ city, now }: CurrentTimeCardProps) {
           className="text-[52px] font-light leading-[56px] tracking-[-2px]"
           style={{ color: ink }}
         >
-          {formatClockTime(now, city.timeZone, language === "vi" ? "vi-VN" : "en-US")}
+          {formatClockTime(now, city.timeZone, locale)}
         </Text>
         <Text className="mb-1 ml-2 text-[10px] font-medium uppercase" style={{ color: muted }}>
           {city.timezoneCode}

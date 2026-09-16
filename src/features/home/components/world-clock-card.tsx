@@ -16,7 +16,7 @@ type WorldClockCardProps = {
 }
 
 export function WorldClockCard({ city, now }: WorldClockCardProps) {
-  const { language, t } = useTranslation()
+  const { locale, t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
   const hour = Number(formatClockTime(now, city.timeZone, "en-US").slice(0, 2))
   const isNight = hour < 7 || hour >= 19
@@ -50,7 +50,7 @@ export function WorldClockCard({ city, now }: WorldClockCardProps) {
         <View className="flex-1">
           <View className="flex-row items-center gap-2">
             <Text className="text-[16px] font-semibold" style={{ color: palette.ink }}>
-              {city.name}
+              {t(`home:cities.${city.id}.name`)}
             </Text>
             <View className="rounded-full bg-[#F0EEE9] px-2 py-0.5 dark:bg-[#303B49]">
               <Text className="text-[9px] font-semibold" style={{ color: palette.ink }}>
@@ -59,12 +59,12 @@ export function WorldClockCard({ city, now }: WorldClockCardProps) {
             </View>
           </View>
           <Text className="mt-1 text-[11px]" style={{ color: palette.muted }}>
-            {getTimeZoneLabel(city.id, language)}
+            {getTimeZoneLabel(city.id, t)}
           </Text>
         </View>
         <View className="items-end">
           <Text className="text-[30px] font-light tracking-[-1px]" style={{ color: palette.ink }}>
-            {formatClockTime(now, city.timeZone, language === "vi" ? "vi-VN" : "en-US")}
+            {formatClockTime(now, city.timeZone, locale)}
           </Text>
           <Text className="text-[9px] uppercase" style={{ color: palette.muted }}>
             {city.timezoneCode}
@@ -72,7 +72,7 @@ export function WorldClockCard({ city, now }: WorldClockCardProps) {
           <View className="flex-row items-center gap-1">
             <WeatherIcon color={palette.muted} size={11} />
             <Text className="text-[9px] uppercase" style={{ color: palette.muted }}>
-              {isNight ? t("home.midnight") : t("home.daylight")}
+              {isNight ? t("home:midnight") : t("home:daylight")}
             </Text>
           </View>
         </View>

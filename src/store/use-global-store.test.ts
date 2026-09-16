@@ -17,19 +17,17 @@ describe("useGlobalStore", () => {
       hasSeenOnboarding: false,
       mode: "world",
       soundscape: "rain",
-      language: "vi",
       backgroundMode: "default",
       selectedWorldCityIds: ["hoChiMinh"],
     })
   })
 
-  it("starts with the Vietnamese Nordic world-clock defaults", () => {
+  it("starts with the Nordic world-clock defaults", () => {
     const state = useGlobalStore.getState()
 
     expect(state.theme).toBe("light")
     expect(state.mode).toBe("world")
     expect(state.soundscape).toBe("rain")
-    expect(state.language).toBe("vi")
     expect(state.backgroundMode).toBe("default")
     expect(state.selectedWorldCityIds).toEqual(["hoChiMinh"])
   })
@@ -40,7 +38,6 @@ describe("useGlobalStore", () => {
     state.setTheme("dark")
     state.setMode("pomodoro")
     state.setSoundscape("stream")
-    state.setLanguage("en")
     state.setBackgroundMode("ai")
     state.addWorldCity("tokyo")
     state.addWorldCity("tokyo")
@@ -49,7 +46,6 @@ describe("useGlobalStore", () => {
       theme: "dark",
       mode: "pomodoro",
       soundscape: "stream",
-      language: "en",
       backgroundMode: "ai",
       selectedWorldCityIds: ["hoChiMinh", "tokyo"],
     })
@@ -64,7 +60,6 @@ describe("useGlobalStore", () => {
       hasSeenOnboarding: false,
       mode: "world",
       soundscape: "rain",
-      language: "vi",
       backgroundMode: "default",
       selectedWorldCityIds: ["hoChiMinh"],
     })

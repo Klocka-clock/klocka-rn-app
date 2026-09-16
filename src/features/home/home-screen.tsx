@@ -62,7 +62,7 @@ export function HomeScreen() {
             onPress={() => setCountryPickerVisible(true)}
           >
             <Text className="text-[13px] font-semibold" style={{ color: colors.primary }}>
-              + {t("home.addCountry")}
+              + {t("home:addCountry")}
             </Text>
           </Pressable>
 
@@ -78,13 +78,13 @@ export function HomeScreen() {
                 className="text-center text-[18px] font-medium"
                 style={{ color: colors.onSurface }}
               >
-                {t(`modes.${mode}` as "modes.timer" | "modes.pomodoro")}
+                {t(`modes.${mode}`)}
               </Text>
               <Text
                 className="mt-2 text-center text-[13px]"
                 style={{ color: colors.onSurfaceVariant }}
               >
-                {t("home.now")}
+                {t("home:now")}
               </Text>
             </View>
           )}
@@ -110,11 +110,11 @@ export function HomeScreen() {
           >
             <View className="mb-5 flex-row items-center justify-between">
               <Text className="text-[20px] font-semibold" style={{ color: colors.onSurface }}>
-                {t("home.chooseCountry")}
+                {t("home:chooseCountry")}
               </Text>
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel={t("home.chooseCountry")}
+                accessibilityLabel={t("close")}
                 className="rounded-full bg-[#EAE8E3] px-3 py-2 dark:bg-[#303B49]"
                 onPress={() => setCountryPickerVisible(false)}
               >
@@ -141,7 +141,7 @@ export function HomeScreen() {
                 >
                   <View>
                     <Text className="text-[15px] font-semibold" style={{ color: colors.onSurface }}>
-                      {city.name}
+                      {t(`home:cities.${city.id}.name`)}
                     </Text>
                     <Text className="mt-0.5 text-[11px]" style={{ color: colors.onSurfaceVariant }}>
                       {city.timezoneCode}

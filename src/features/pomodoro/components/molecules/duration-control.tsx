@@ -1,13 +1,13 @@
+import { useTranslation } from "@/i18n/use-translation"
 import { ChevronDown, ChevronUp } from "lucide-react-native"
 import { Pressable, Text, View } from "react-native"
 import type { ThemeTokens } from "@/theme/tokens"
 import type { DurationUnit } from "../../pomodoro.utils"
-import { BilingualText } from "../atoms/bilingual-text"
+import { LocalizedText } from "../atoms/localized-text"
 
 export function DurationControl({
   value,
   label,
-  unit,
   colors,
   onChange,
 }: {
@@ -17,10 +17,11 @@ export function DurationControl({
   colors: ThemeTokens
   onChange: (amount: number) => void
 }) {
+  const { t } = useTranslation()
   return (
     <View className="flex-1 rounded-[24px] bg-[#F4F2ED] px-2 py-3 dark:bg-[#1B2430]">
       <Pressable
-        accessibilityLabel={`Increase ${label}`}
+        accessibilityLabel={t("pomodoro:increase", { unit: label })}
         accessibilityRole="button"
         className="h-11 items-center justify-center rounded-full bg-white active:opacity-70 dark:bg-[#25303D]"
         onPress={() => onChange(1)}
@@ -30,13 +31,13 @@ export function DurationControl({
       <Text className="mt-4 text-center text-[28px]" style={{ color: colors.onSurface }}>
         {String(value).padStart(2, "0")}
       </Text>
-      <BilingualText
+      <LocalizedText
         className="mt-1 text-center text-[11px]"
         color={colors.onSurfaceVariant}
         value={label}
       />
       <Pressable
-        accessibilityLabel={`Decrease ${label}`}
+        accessibilityLabel={t("pomodoro:decrease", { unit: label })}
         accessibilityRole="button"
         className="mt-4 h-11 items-center justify-center rounded-full bg-white active:opacity-70 dark:bg-[#25303D]"
         onPress={() => onChange(-1)}

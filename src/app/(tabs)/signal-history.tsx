@@ -21,13 +21,13 @@ export default function RecentScreen() {
           className="mt-7 text-center text-[30px] font-normal"
           style={{ color: colors.onSurface }}
         >
-          {t("screens.historyTitle")}
+          {t("history:historyTitle")}
         </Text>
         <Text
           className="mt-2 max-w-[280px] text-center text-[14px] leading-6"
           style={{ color: colors.onSurfaceVariant }}
         >
-          {t("screens.historyDescription")}
+          {t("history:historyDescription")}
         </Text>
         <Sparkles className="mt-8" color={colors.tertiary} size={20} />
       </View>
