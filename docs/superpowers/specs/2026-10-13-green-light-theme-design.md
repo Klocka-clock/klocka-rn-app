@@ -1,55 +1,55 @@
-# Green Light Theme Design
+# Thiết kế bộ màu xanh cho giao diện sáng
 
-## Goal
+## Mục tiêu
 
-Replace Klocka's current light-theme brand palette with the green palette supplied in the design reference. Keep the existing dark theme visually unchanged. Apply the palette consistently across application screens and shared UI components.
+Thay bộ màu thương hiệu hiện tại của giao diện sáng Klocka bằng bộ màu xanh trong ảnh tham chiếu. Giữ nguyên giao diện tối hiện tại. Áp dụng bộ màu nhất quán trên các màn hình và component giao diện dùng chung.
 
-## Approved palette
+## Bảng màu đã duyệt
 
-| Role | Color |
+| Vai trò | Mã màu |
 | --- | --- |
-| Primary | `#1D9A4F` |
-| Secondary | `#4A7C59` |
-| Tertiary | `#B5C9B7` |
-| Neutral | `#EBF5EE` |
+| Chính (Primary) | `#1D9A4F` |
+| Phụ (Secondary) | `#4A7C59` |
+| Bổ trợ (Tertiary) | `#B5C9B7` |
+| Trung tính (Neutral) | `#EBF5EE` |
 
-These four values are the source colors. Additional shades needed for pressed, disabled, border, surface, and text roles should be derived from these colors while maintaining readable contrast. Semantic error and warning colors retain their existing meaning. Third-party identity colors, including Google and Facebook, remain brand colors.
+Đây là bốn màu gốc. Các sắc độ bổ sung cho trạng thái nhấn, vô hiệu hóa, đường viền, bề mặt và chữ sẽ được suy ra từ các màu này, đồng thời đảm bảo độ tương phản dễ đọc. Màu lỗi và cảnh báo tiếp tục giữ ý nghĩa hiện tại. Màu nhận diện của dịch vụ bên thứ ba, bao gồm Google và Facebook, tiếp tục theo màu thương hiệu của họ.
 
-## Theme behavior
+## Cách hoạt động của giao diện sáng và tối
 
-- The light theme uses the new green palette for brand and neutral roles.
-- The dark theme retains its current values and appearance.
-- Theme-aware components continue to select colors through the existing theme selection mechanism.
-- Light-only surfaces and palette-dependent illustrations or charts use green-derived colors rather than the previous Nordic palette.
+- Giao diện sáng dùng bộ màu xanh mới cho các vai trò thương hiệu và trung tính.
+- Giao diện tối giữ nguyên các mã màu và diện mạo hiện tại.
+- Component hỗ trợ giao diện sáng/tối tiếp tục chọn màu thông qua cơ chế chọn theme hiện có.
+- Các bề mặt chỉ dùng ở giao diện sáng, hình minh họa và biểu đồ phụ thuộc palette sẽ dùng màu suy ra từ bộ màu xanh thay cho palette Nordic hiện tại.
 
-## Color ownership
+## Nơi quản lý màu sắc
 
-The palette should be represented through existing centralized theme mechanisms rather than introducing another styling system:
+Quản lý palette thông qua các cơ chế theme tập trung sẵn có, không tạo thêm hệ thống style mới:
 
-- `src/theme/tokens.ts` owns semantic theme values and named brand colors.
-- `src/components/ui/gluestack-ui-provider/config.ts` supplies component-library color scales.
-- `tailwind.config.js` exposes project color names used by NativeWind classes.
-- `src/global.css` holds matching CSS variables.
-- Screens, features, and shared components consume semantic tokens or named colors instead of embedding palette hex values.
-- App launch or splash backgrounds that currently use the old light palette are updated for consistency.
+- `src/theme/tokens.ts` quản lý các giá trị theme theo ngữ nghĩa và tên màu thương hiệu.
+- `src/components/ui/gluestack-ui-provider/config.ts` cung cấp các sắc độ màu cho thư viện component.
+- `tailwind.config.js` khai báo tên màu dự án được dùng trong class NativeWind.
+- `src/global.css` lưu các biến CSS tương ứng.
+- Màn hình, tính năng và component dùng chung lấy màu từ token theo ngữ nghĩa hoặc tên màu thay vì ghi trực tiếp mã hex của palette.
+- Cập nhật màu nền khởi chạy hoặc splash đang dùng palette sáng cũ để đảm bảo đồng nhất.
 
-The audit found direct palette colors across 21 files. Existing unrelated edits in the working tree must be preserved while making the color changes.
+Đợt rà soát tìm thấy mã màu palette được ghi trực tiếp trong 21 file. Khi đổi màu, cần giữ nguyên các chỉnh sửa không liên quan hiện có trong working tree.
 
-## Scope and exclusions
+## Phạm vi và phần loại trừ
 
-In scope: light-theme surfaces, text, borders, controls, navigation, buttons, illustrations, charts, and decorative accents that currently use the old brand palette.
+Trong phạm vi: bề mặt, chữ, đường viền, điều khiển, điều hướng, nút, hình minh họa, biểu đồ và chi tiết trang trí của giao diện sáng hiện đang dùng palette thương hiệu cũ.
 
-Out of scope: redesigning layouts or behavior, changing typography or spacing, changing dark-theme colors, and recoloring third-party logos or semantic error and warning states.
+Ngoài phạm vi: thiết kế lại bố cục hoặc hành vi, thay đổi kiểu chữ hoặc khoảng cách, đổi màu giao diện tối, đổi màu logo dịch vụ bên thứ ba hoặc màu trạng thái lỗi và cảnh báo theo ngữ nghĩa.
 
-## Acceptance criteria
+## Tiêu chí hoàn thành
 
-1. Primary, secondary, tertiary, and neutral roles use the approved hex values in the light theme.
-2. Light-theme screens and shared components no longer rely on old Nordic brand colors for equivalent UI roles.
-3. Dark-theme values and appearance remain unchanged.
-4. Google/Facebook brand colors and semantic error/warning colors remain intact.
-5. Text and controls retain sufficient contrast against their light-theme surfaces.
-6. Theme color definitions remain centralized and consistent across tokens, Gluestack, Tailwind, and CSS variables.
+1. Các vai trò chính, phụ, bổ trợ và trung tính trong giao diện sáng dùng đúng mã hex đã duyệt.
+2. Màn hình và component dùng chung trong giao diện sáng không còn dùng màu thương hiệu Nordic cũ cho các vai trò giao diện tương ứng.
+3. Mã màu và diện mạo của giao diện tối không thay đổi.
+4. Màu thương hiệu Google/Facebook và màu lỗi/cảnh báo theo ngữ nghĩa được giữ nguyên.
+5. Chữ và điều khiển duy trì đủ độ tương phản trên các bề mặt của giao diện sáng.
+6. Định nghĩa màu theme được quản lý tập trung và đồng nhất giữa tokens, Gluestack, Tailwind và biến CSS.
 
-## Verification approach
+## Cách kiểm tra
 
-Review the light and dark theme color definitions, search for remaining old palette literals in UI source, and inspect affected app screens in both themes. Confirm the type check still succeeds after implementation. No layout or functional changes are part of this work.
+Rà soát định nghĩa màu của giao diện sáng và tối, tìm các mã màu cũ còn ghi trực tiếp trong mã giao diện, và xem các màn hình bị ảnh hưởng ở cả hai giao diện. Sau khi triển khai, xác nhận kiểm tra kiểu dữ liệu vẫn thành công. Công việc này không bao gồm thay đổi bố cục hoặc chức năng.
