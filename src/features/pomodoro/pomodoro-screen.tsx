@@ -23,12 +23,17 @@ export function PomodoroScreen() {
   const [showRoutines, setShowRoutines] = useState(false)
 
   useEffect(() => {
-    if (!running || remaining <= 0) {
-      if (remaining <= 0) setRunning(false)
-      return
-    }
+    if (!running || remaining <= 0) return
 
-    const interval = setInterval(() => setRemaining((value) => tickDuration(value)), 1000)
+    const interval = setInterval(() => {
+      if (remaining <= 1) {
+        setRemaining(0)
+        setRunning(false)
+        return
+      }
+
+      setRemaining((value) => tickDuration(value))
+    }, 1000)
     return () => clearInterval(interval)
   }, [remaining, running])
 
