@@ -23,22 +23,22 @@ export type ThemeTokens = {
 }
 
 const lightTheme: ThemeTokens = {
-  background: "#FBF9F4",
-  surface: "#FBF9F4",
-  surfaceDim: "#DBDAD5",
-  surfaceContainer: "#F0EEE9",
-  surfaceContainerHigh: "#EAE8E3",
-  surfaceContainerHighest: "#E4E2DD",
-  onSurface: "#1B1C19",
-  onSurfaceVariant: "#45474C",
-  primary: "#192231",
+  background: "#EBF5EE",
+  surface: "#FFFFFF",
+  surfaceDim: "#B5C9B7",
+  surfaceContainer: "#E2EEE5",
+  surfaceContainerHigh: "#D5E5D9",
+  surfaceContainerHighest: "#C7DACB",
+  onSurface: "#17221A",
+  onSurfaceVariant: "#45564A",
+  primary: "#1D9A4F",
   onPrimary: "#FFFFFF",
-  secondary: "#A73832",
-  tertiary: "#E69A58",
-  outline: "#75777D",
-  outlineVariant: "#C5C6CC",
-  waveBlue: "#EBF2FA",
-  waveGreen: "#E2EBD8",
+  secondary: "#4A7C59",
+  tertiary: "#B5C9B7",
+  outline: "#65796A",
+  outlineVariant: "#B5C9B7",
+  waveBlue: "#E2EEE5",
+  waveGreen: "#B5C9B7",
   abyssalFjord: "#0E141D",
 }
 
@@ -54,6 +54,8 @@ const darkTheme: ThemeTokens = {
   onSurfaceVariant: "#C5C6CC",
   primary: "#BEC7DB",
   onPrimary: "#131C2B",
+  secondary: "#A73832",
+  tertiary: "#E69A58",
   outline: "#89909C",
   outlineVariant: "#454F5D",
   waveBlue: "#26384D",
@@ -65,17 +67,7 @@ export const themeTokens: Record<ThemeName, ThemeTokens> = {
   dark: darkTheme,
 }
 
-export const nordicTokens = {
-  colors: {
-    midnightNavy: "#192231",
-    linen: "#F7F5F0",
-    snöWhite: "#FFFFFF",
-    dimmaBlue: "#EBF2FA",
-    lavGreen: "#E2EBD8",
-    lingonberry: "#D95D54",
-    gryningAmber: "#E69A58",
-    abyssalFjord: "#0E141D",
-  },
+export const klockaTokens = {
   typography: {
     fontFamily: "Plus Jakarta Sans",
     displayHeroMobile: {

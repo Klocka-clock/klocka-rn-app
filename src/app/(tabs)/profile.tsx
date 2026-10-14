@@ -17,18 +17,48 @@ export default function ProfileScreen() {
       <StatusBar style={theme === "dark" ? "light" : "dark"} />
       <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}>
         <View className="px-5" style={{ paddingTop: Math.max(insets.top, 20) }}>
-          <View className="items-center rounded-[32px] bg-[#192231] px-6 py-9 shadow-floating">
-            <View className="h-20 w-20 items-center justify-center rounded-full bg-[#E2EBD8]">
-              <UserRound color="#192231" size={34} strokeWidth={1.5} />
+          <View
+            className="items-center rounded-[32px] px-6 py-9 shadow-floating"
+            style={{ backgroundColor: theme === "dark" ? "#192231" : colors.secondary }}
+          >
+            <View
+              className="h-20 w-20 items-center justify-center rounded-full"
+              style={{ backgroundColor: theme === "dark" ? "#E2EBD8" : colors.tertiary }}
+            >
+              <UserRound
+                color={theme === "dark" ? "#192231" : colors.onSurface}
+                size={34}
+                strokeWidth={1.5}
+              />
             </View>
             <Text className="mt-4 text-[20px] font-semibold text-white">KLOCKA User</Text>
-            <Text className="mt-1 text-[13px] text-[#BEC7DB]">user@example.com</Text>
+            <Text
+              className="mt-1 text-[13px]"
+              style={{ color: theme === "dark" ? "#BEC7DB" : "#FFFFFF" }}
+            >
+              user@example.com
+            </Text>
           </View>
 
           <View className="mt-3 flex-row justify-around rounded-[28px] bg-white py-5 shadow-pillowy dark:bg-[#1B2430]">
-            <ProfileStat label={t("profile:posts")} value="17" color={colors.onSurface} />
-            <ProfileStat label={t("profile:likes")} value="55" color={colors.onSurface} />
-            <ProfileStat label={t("profile:followers")} value="2.5k" color={colors.onSurface} />
+            <ProfileStat
+              label={t("profile:posts")}
+              value="17"
+              color={colors.onSurface}
+              muted={theme === "dark" ? "#75777D" : colors.outline}
+            />
+            <ProfileStat
+              label={t("profile:likes")}
+              value="55"
+              color={colors.onSurface}
+              muted={theme === "dark" ? "#75777D" : colors.outline}
+            />
+            <ProfileStat
+              label={t("profile:followers")}
+              value="2.5k"
+              color={colors.onSurface}
+              muted={theme === "dark" ? "#75777D" : colors.outline}
+            />
           </View>
 
           <View className="mt-3 rounded-[28px] bg-white p-5 shadow-pillowy dark:bg-[#1B2430]">
@@ -49,13 +79,23 @@ export default function ProfileScreen() {
   )
 }
 
-function ProfileStat({ label, value, color }: { label: string; value: string; color: string }) {
+function ProfileStat({
+  label,
+  value,
+  color,
+  muted,
+}: {
+  label: string
+  value: string
+  color: string
+  muted: string
+}) {
   return (
     <View className="items-center">
       <Text className="text-[16px] font-semibold" style={{ color }}>
         {value}
       </Text>
-      <Text className="mt-1 text-[10px] uppercase tracking-[1px]" style={{ color: "#75777D" }}>
+      <Text className="mt-1 text-[10px] uppercase tracking-[1px]" style={{ color: muted }}>
         {label}
       </Text>
     </View>

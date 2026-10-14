@@ -47,7 +47,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 
   return {
     ...config,
-
     name: current.name,
     slug: config.slug ?? "klocka-rn-app",
     scheme: current.scheme,

@@ -19,20 +19,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        nordic: {
-          "midnight": "#192231",
-          "linen": "#F7F5F0",
-          "snow": "#FFFFFF",
-          "dimma": "#EBF2FA",
-          "lichen": "#E2EBD8",
-          "lingonberry": "#D95D54",
-          "amber": "#E69A58",
-          "fjord": "#0E141D",
-          "surface": "#FBF9F4",
-          "surface-dim": "#DBDAD5",
-          "surface-container": "#F0EEE9",
-          "surface-container-high": "#EAE8E3",
-          "surface-container-highest": "#E4E2DD",
+        klocka: {
+          "primary": "#1D9A4F",
+          "secondary": "#4A7C59",
+          "tertiary": "#B5C9B7",
+          "neutral": "#EBF5EE",
+          "surface": "#FFFFFF",
+          "surface-dim": "#B5C9B7",
+          "surface-container": "#E2EEE5",
+          "surface-container-high": "#D5E5D9",
+          "surface-container-highest": "#C7DACB",
         },
         primary: {
           0: "rgb(var(--color-primary-0)/<alpha-value>)",

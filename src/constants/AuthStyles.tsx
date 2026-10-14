@@ -22,11 +22,11 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#0F172A", // Slate 900
+    color: "#17221A",
   },
   subtitle: {
     fontSize: 15,
-    color: "#64748B", // Slate 500
+    color: "#45564A",
     marginTop: 10,
     lineHeight: 22,
   },
@@ -39,27 +39,27 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: 15,
     fontWeight: "600",
-    color: "#334155", // Slate 700
+    color: "#17221A",
     marginBottom: 8,
   },
   input: {
     height: 48,
     borderWidth: 1,
-    borderColor: "#E2E8F0", // Slate 200
+    borderColor: "#B5C9B7",
     borderRadius: 12,
     paddingHorizontal: 16,
     fontSize: 16,
-    backgroundColor: "#F8FAFC", // Slate 50
-    color: "#1E293B", // Slate 800
+    backgroundColor: "#F7FBF8",
+    color: "#17221A",
   },
   button: {
-    backgroundColor: "#6366F1", // Indigo 500
+    backgroundColor: "#1D9A4F",
     borderRadius: 12,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 28,
-    shadowColor: "#6366F1", // Indigo 500
+    shadowColor: "#1D9A4F",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
@@ -78,6 +78,6 @@ export const styles = StyleSheet.create({
   textButtonText: {
     fontSize: 15,
     fontWeight: "600",
-    color: "#6366F1", // Indigo 500
+    color: "#1D9A4F",
   },
 })

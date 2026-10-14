@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar"
-import { useEffect, useMemo, useRef, useState } from "react"
-import { Animated, Easing, Modal, Pressable, ScrollView, Text, View } from "react-native"
+import { useEffect, useMemo, useState } from "react"
+import { Modal, Pressable, ScrollView, Text, View } from "react-native"
+import { GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler"
+import Animated from "react-native-reanimated"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { useGlobalStore } from "@/store/use-global-store"
 import { themeTokens } from "@/theme/tokens"
 import { useTranslation } from "@/i18n/use-translation"
+import { useDismissibleSheet } from "@/hooks/use-dismissible-sheet"
 import { worldCities } from "./home.data"
 import { getSelectedWorldCities } from "./home.utils"
 import { CurrentTimeCard } from "./components/current-time-card"
@@ -20,7 +23,6 @@ export function HomeScreen() {
   const addWorldCity = useGlobalStore((state) => state.addWorldCity)
   const [now, setNow] = useState(() => new Date())
   const [isCountryPickerVisible, setCountryPickerVisible] = useState(false)
-  const countrySheetY = useRef(new Animated.Value(320)).current
   const colors = themeTokens[theme]
   const currentCity = worldCities[0]
   const cityCards = useMemo(
@@ -34,17 +36,10 @@ export function HomeScreen() {
     return () => clearInterval(timer)
   }, [])
 
-  useEffect(() => {
-    if (isCountryPickerVisible) {
-      countrySheetY.setValue(320)
-      Animated.timing(countrySheetY, {
-        toValue: 0,
-        duration: 280,
-        easing: Easing.out(Easing.cubic),
-        useNativeDriver: true,
-      }).start()
-    }
-  }, [countrySheetY, isCountryPickerVisible])
+  const { backdropStyle, dismiss, gesture, sheetStyle } = useDismissibleSheet(
+    isCountryPickerVisible,
+    () => setCountryPickerVisible(false),
+  )
 
   return (
     <View className="flex-1" style={{ backgroundColor: colors.background }}>
@@ -58,10 +53,13 @@ export function HomeScreen() {
           <CurrentTimeCard city={currentCity} now={now} />
           <Pressable
             accessibilityRole="button"
-            className="mx-4 mt-3 items-center rounded-full border border-[#C5C6CC] bg-white py-3 active:opacity-70 dark:border-[#454F5D] dark:bg-[#1B2430]"
+            className="mx-4 mt-3 items-center rounded-full border border-klocka-tertiary bg-white py-3 active:opacity-70 dark:border-[#454F5D] dark:bg-[#1B2430]"
             onPress={() => setCountryPickerVisible(true)}
           >
-            <Text className="text-[13px] font-semibold" style={{ color: colors.primary }}>
+            <Text
+              className="text-[13px] font-semibold"
+              style={{ color: theme === "dark" ? colors.primary : colors.secondary }}
+            >
               + {t("home:addCountry")}
             </Text>
           </Pressable>
@@ -94,65 +92,80 @@ export function HomeScreen() {
         animationType="none"
         transparent
         visible={isCountryPickerVisible}
-        onRequestClose={() => setCountryPickerVisible(false)}
+        onRequestClose={dismiss}
       >
-        <Pressable
-          className="flex-1 justify-end bg-black/30"
-          onPress={() => setCountryPickerVisible(false)}
-        >
-          <Animated.View
-            className="rounded-t-[32px] px-5 pb-8 pt-6"
-            onStartShouldSetResponder={() => true}
-            style={[
-              { backgroundColor: colors.surface },
-              { transform: [{ translateY: countrySheetY }] },
-            ]}
-          >
-            <View className="mb-5 flex-row items-center justify-between">
-              <Text className="text-[20px] font-semibold" style={{ color: colors.onSurface }}>
-                {t("home:chooseCountry")}
-              </Text>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel={t("close")}
-                className="rounded-full bg-[#EAE8E3] px-3 py-2 dark:bg-[#303B49]"
-                onPress={() => setCountryPickerVisible(false)}
+        <GestureHandlerRootView className="flex-1">
+          <View className="flex-1 justify-end">
+            <Pressable className="absolute inset-0" onPress={dismiss}>
+              <Animated.View className="flex-1 bg-black/30" style={backdropStyle} />
+            </Pressable>
+            <GestureDetector gesture={gesture}>
+              <Animated.View
+                className="rounded-t-[32px] px-5 pb-8 pt-6"
+                onStartShouldSetResponder={() => true}
+                style={[{ backgroundColor: colors.surface }, sheetStyle]}
               >
-                <Text className="text-[12px]" style={{ color: colors.onSurfaceVariant }}>
-                  ×
-                </Text>
-              </Pressable>
-            </View>
-            {worldCities.map((city) => {
-              const selected = selectedWorldCityIds.includes(city.id)
+                <View className="mb-5 flex-row items-center justify-between">
+                  <Text className="text-[20px] font-semibold" style={{ color: colors.onSurface }}>
+                    {t("home:chooseCountry")}
+                  </Text>
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={t("close")}
+                    className="rounded-full bg-klocka-surface-container px-3 py-2 dark:bg-[#303B49]"
+                    onPress={dismiss}
+                  >
+                    <Text className="text-[12px]" style={{ color: colors.onSurfaceVariant }}>
+                      ×
+                    </Text>
+                  </Pressable>
+                </View>
+                {worldCities.map((city) => {
+                  const selected = selectedWorldCityIds.includes(city.id)
 
-              return (
-                <Pressable
-                  key={city.id}
-                  accessibilityRole="radio"
-                  accessibilityState={{ selected }}
-                  className="mb-2 flex-row items-center justify-between rounded-2xl px-4 py-3 active:opacity-70"
-                  style={{ backgroundColor: selected ? colors.waveGreen : colors.surfaceContainer }}
-                  disabled={selected}
-                  onPress={() => {
-                    addWorldCity(city.id)
-                    setCountryPickerVisible(false)
-                  }}
-                >
-                  <View>
-                    <Text className="text-[15px] font-semibold" style={{ color: colors.onSurface }}>
-                      {t(`home:cities.${city.id}.name`)}
-                    </Text>
-                    <Text className="mt-0.5 text-[11px]" style={{ color: colors.onSurfaceVariant }}>
-                      {city.timezoneCode}
-                    </Text>
-                  </View>
-                  {selected && <Text style={{ color: colors.primary }}>✓</Text>}
-                </Pressable>
-              )
-            })}
-          </Animated.View>
-        </Pressable>
+                  return (
+                    <Pressable
+                      key={city.id}
+                      accessibilityRole="radio"
+                      accessibilityState={{ selected }}
+                      className="mb-2 flex-row items-center justify-between rounded-2xl px-4 py-3 active:opacity-70"
+                      style={{
+                        backgroundColor: selected ? colors.waveGreen : colors.surfaceContainer,
+                      }}
+                      disabled={selected}
+                      onPress={() => {
+                        addWorldCity(city.id)
+                        dismiss()
+                      }}
+                    >
+                      <View>
+                        <Text
+                          className="text-[15px] font-semibold"
+                          style={{ color: colors.onSurface }}
+                        >
+                          {t(`home:cities.${city.id}.name`)}
+                        </Text>
+                        <Text
+                          className="mt-0.5 text-[11px]"
+                          style={{ color: colors.onSurfaceVariant }}
+                        >
+                          {city.timezoneCode}
+                        </Text>
+                      </View>
+                      {selected && (
+                        <Text
+                          style={{ color: theme === "dark" ? colors.primary : colors.onSurface }}
+                        >
+                          ✓
+                        </Text>
+                      )}
+                    </Pressable>
+                  )
+                })}
+              </Animated.View>
+            </GestureDetector>
+          </View>
+        </GestureHandlerRootView>
       </Modal>
     </View>
   )

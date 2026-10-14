@@ -4,9 +4,9 @@
     "slug": "klocka-rn-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
     "scheme": "klocka-rn-app",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.quindarts.klockaclock.dev",
@@ -15,16 +15,14 @@
       }
     },
     "android": {
+      "package": "com.quindarts.klockaclock.dev",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#EBF5EE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false,
-      "permissions": [],
-      "package": "com.anonymous.klocka-rn-app"
+      "predictiveBackGestureEnabled": false
     },
     "web": {
       "bundler": "metro",
@@ -32,6 +30,16 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "enableSceneSupport": true
+          }
+        }
+      ],
+      "expo-image",
+      "expo-status-bar",
       "expo-router",
       "expo-font",
       "expo-secure-store",
@@ -42,7 +50,7 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "#EBF5EE",
           "dark": {
             "backgroundColor": "#000000"
           }
@@ -71,7 +79,7 @@
     },
     "owner": "quindarts",
     "runtimeVersion": {
-      "policy": "appVersion"
+      "policy": "fingerprint"
     },
     "updates": {
       "url": "https://u.expo.dev/1e0b517c-fcbb-4460-89bf-53fd4c572f99"

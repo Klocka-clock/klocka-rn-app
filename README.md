@@ -44,8 +44,9 @@ Docs: https://docs.expo.dev
 
 ## Expo Router (Important)
 
-This project uses Expo Router, a file-based routing system built on top
-of React Navigation.
+This project uses Expo Router for file-based routing. With SDK 57, import
+navigation APIs and types from `expo-router` entry points, such as
+`expo-router/js-tabs`, instead of `@react-navigation/*`.
 
 Instead of manually configuring navigation, routing is handled
 automatically based on your folder structure.
@@ -88,7 +89,7 @@ router.push("/profile");
 
 ## Routing
 
--   Expo Router v6
+-   Expo Router for SDK 57
 -   File-based routing
 -   Nested layouts
 -   Stack navigation
@@ -212,6 +213,21 @@ Install Expo CLI:
     yarn ios
 
 Mac only
+
+This project uses Expo SDK 57, React Native 0.86, and React 19.2. Xcode 27
+uses Device Hub to display simulators. The `expo-build-properties` plugin
+enables scene support in `app.json`, which is required when building with
+the iOS 27 SDK.
+
+After upgrading from SDK 54, regenerate any existing native iOS project
+before building. Back up custom native changes first: prebuild replaces
+the generated directory.
+
+    yarn expo prebuild --platform ios --clean
+    yarn ios
+
+The `ios` and `android` directories are generated and are not committed.
+Keep native configuration in Expo config/plugins so it survives prebuild.
 
 ------------------------------------------------------------------------
 

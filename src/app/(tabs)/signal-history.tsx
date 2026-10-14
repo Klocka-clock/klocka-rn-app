@@ -14,7 +14,7 @@ export default function RecentScreen() {
     <View className="flex-1 px-5" style={{ backgroundColor: colors.background }}>
       <StatusBar style={theme === "dark" ? "light" : "dark"} />
       <View className="flex-1 items-center justify-center">
-        <View className="h-24 w-24 items-center justify-center rounded-[32px] bg-[#EBF2FA] shadow-floating dark:bg-[#26384D]">
+        <View className="h-24 w-24 items-center justify-center rounded-[32px] bg-klocka-surface-container shadow-floating dark:bg-[#26384D]">
           <History color={colors.primary} size={38} strokeWidth={1.5} />
         </View>
         <Text

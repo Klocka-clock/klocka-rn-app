@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --klocka-surface: #fbf9f4;
-    --klocka-on-surface: #1b1c19;
-    --klocka-primary: #192231;
-    --klocka-wave-blue: #ebf2fa;
-    --klocka-wave-green: #e2ebd8;
+    --klocka-surface: #ffffff;
+    --klocka-on-surface: #17221a;
+    --klocka-primary: #1d9a4f;
+    --klocka-wave-blue: #e2eee5;
+    --klocka-wave-green: #b5c9b7;
   }
 
   .dark {

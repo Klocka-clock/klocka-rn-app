@@ -1,4 +1,5 @@
 import { useGlobalStore } from "@/store/use-global-store"
+import { themeTokens } from "@/theme/tokens"
 import { Moon, Sun, UserRound, Volume2, VolumeX } from "lucide-react-native"
 import { Pressable, Text, View } from "react-native"
 import { useTranslation } from "@/i18n/use-translation"
@@ -9,10 +10,11 @@ export function HomeHeader() {
   const soundscape = useGlobalStore((state) => state.soundscape)
   const setTheme = useGlobalStore((state) => state.setTheme)
   const setSoundscape = useGlobalStore((state) => state.setSoundscape)
+  const colors = themeTokens[theme]
 
   const isDark = theme === "dark"
   const isSoundOn = soundscape === "rain"
-  const ink = isDark ? "#F2F1EC" : "#192231"
+  const ink = colors.onSurface
 
   return (
     <View className="flex-row items-center justify-between px-4 pb-3 pt-2">
@@ -44,7 +46,7 @@ export function HomeHeader() {
         <Pressable
           accessibilityLabel={t("home:profile")}
           accessibilityRole="button"
-          className="h-10 w-10 items-center justify-center rounded-full bg-[#192231] shadow-pillowy active:opacity-70"
+          className="h-10 w-10 items-center justify-center rounded-full bg-klocka-primary shadow-pillowy active:opacity-70 dark:bg-[#192231]"
         >
           <UserRound color="#FFFFFF" size={17} />
         </Pressable>
