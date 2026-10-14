@@ -37,15 +37,15 @@ cssInterop(PrimitiveIcon, {
 })
 
 const buttonStyle = tva({
-  base: "group/button flex-row items-center justify-center gap-2 rounded bg-primary-500 data-[disabled=true]:opacity-40 data-[focus-visible=true]:web:outline-none data-[focus-visible=true]:web:ring-2",
+  base: "group/button flex-row items-center justify-center gap-2 rounded bg-primary-600 data-[disabled=true]:opacity-40 data-[focus-visible=true]:web:outline-none data-[focus-visible=true]:web:ring-2 dark:bg-primary-500",
   variants: {
     action: {
       primary:
-        "border-primary-300 bg-primary-500 data-[active=true]:border-primary-500 data-[hover=true]:border-primary-400 data-[active=true]:bg-primary-700 data-[hover=true]:bg-primary-600 data-[focus-visible=true]:web:ring-indicator-info",
+        "border-primary-300 bg-primary-600 data-[active=true]:border-primary-500 data-[hover=true]:border-primary-400 data-[active=true]:bg-primary-800 data-[hover=true]:bg-primary-700 data-[focus-visible=true]:web:ring-indicator-info dark:bg-primary-500 dark:data-[active=true]:bg-primary-700 dark:data-[hover=true]:bg-primary-600",
       secondary:
         "border-secondary-300 bg-secondary-500 data-[active=true]:border-secondary-700 data-[hover=true]:border-secondary-400 data-[active=true]:bg-secondary-700 data-[hover=true]:bg-secondary-600 data-[focus-visible=true]:web:ring-indicator-info",
       positive:
-        "border-success-300 bg-success-500 data-[active=true]:border-success-500 data-[hover=true]:border-success-400 data-[active=true]:bg-success-700 data-[hover=true]:bg-success-600 data-[focus-visible=true]:web:ring-indicator-info",
+        "border-success-300 bg-success-600 data-[active=true]:border-success-500 data-[hover=true]:border-success-400 data-[active=true]:bg-success-800 data-[hover=true]:bg-success-700 data-[focus-visible=true]:web:ring-indicator-info dark:bg-success-500 dark:data-[active=true]:bg-success-700 dark:data-[hover=true]:bg-success-600",
       negative:
         "border-error-300 bg-error-500 data-[active=true]:border-error-500 data-[hover=true]:border-error-400 data-[active=true]:bg-error-700 data-[hover=true]:bg-error-600 data-[focus-visible=true]:web:ring-indicator-info",
       default:
@@ -169,7 +169,7 @@ const buttonTextStyle = tva({
       variant: "outline",
       action: "primary",
       class:
-        "text-primary-500 data-[active=true]:text-primary-500 data-[hover=true]:text-primary-500",
+        "text-primary-600 data-[active=true]:text-primary-700 data-[hover=true]:text-primary-700 dark:text-primary-500 dark:data-[active=true]:text-primary-500 dark:data-[hover=true]:text-primary-500",
     },
     {
       variant: "outline",
@@ -181,13 +181,13 @@ const buttonTextStyle = tva({
       variant: "outline",
       action: "positive",
       class:
-        "text-primary-500 data-[active=true]:text-primary-500 data-[hover=true]:text-primary-500",
+        "text-primary-600 data-[active=true]:text-primary-700 data-[hover=true]:text-primary-700 dark:text-primary-500 dark:data-[active=true]:text-primary-500 dark:data-[hover=true]:text-primary-500",
     },
     {
       variant: "outline",
       action: "negative",
       class:
-        "text-primary-500 data-[active=true]:text-primary-500 data-[hover=true]:text-primary-500",
+        "text-error-600 data-[active=true]:text-error-700 data-[hover=true]:text-error-700 dark:text-primary-500 dark:data-[active=true]:text-primary-500 dark:data-[hover=true]:text-primary-500",
     },
   ],
 })

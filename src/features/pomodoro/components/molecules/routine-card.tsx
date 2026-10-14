@@ -1,4 +1,4 @@
-import { nordicTokens } from "@/theme/tokens"
+import { klockaTokens } from "@/theme/tokens"
 import { Pressable, Text, View } from "react-native"
 import type { ThemeTokens } from "@/theme/tokens"
 import type { Routine } from "../../pomodoro.data"
@@ -22,10 +22,10 @@ export function RoutineCard({
     <Pressable
       accessibilityRole="button"
       className="mb-4 flex-row items-center rounded-[28px] bg-white px-5 py-4 active:opacity-75 dark:bg-[#151D29]"
-      style={nordicTokens.shadows.pillowy}
+      style={klockaTokens.shadows.pillowy}
       onPress={onPress}
     >
-      <View className="h-14 w-14 items-center justify-center rounded-[20px] bg-[#F0EEE9] dark:bg-[#25303D]">
+      <View className="h-14 w-14 items-center justify-center rounded-[20px] bg-klocka-surface-container dark:bg-[#25303D]">
         <Icon color={colors.primary} size={25} strokeWidth={1.8} />
       </View>
       <LocalizedText

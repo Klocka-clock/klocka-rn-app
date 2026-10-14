@@ -62,8 +62,8 @@ export function getWorldClockCardPalette(
 
   return {
     card: "#FFFFFF",
-    panel: isNight ? "#E4E2DD" : "#EBF2FA",
-    ink: "#192231",
-    muted: "#75777D",
+    panel: isNight ? "#B5C9B7" : "#E2EEE5",
+    ink: "#17221A",
+    muted: "#45564A",
   }
 }

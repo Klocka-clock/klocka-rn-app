@@ -1,4 +1,4 @@
-import { nordicTokens, type ThemeTokens } from "@/theme/tokens"
+import { klockaTokens, type ThemeTokens } from "@/theme/tokens"
 import { ListChecks, Play, RotateCcw, Waves } from "lucide-react-native"
 import { Pressable, View } from "react-native"
 import { LocalizedText } from "../atoms/localized-text"
@@ -29,7 +29,7 @@ export function TimerActions({
       <Pressable
         accessibilityRole="button"
         accessibilityState={{ busy: running }}
-        className="h-[76px] flex-1 flex-row items-center justify-center rounded-full bg-[#192231] active:opacity-85"
+        className="h-[76px] flex-1 flex-row items-center justify-center rounded-full bg-primary-600 active:opacity-85 dark:bg-[#192231]"
         onPress={onToggle}
       >
         {running ? (
@@ -47,7 +47,7 @@ export function TimerActions({
         accessibilityLabel={routinesLabel}
         accessibilityRole="button"
         className="h-[76px] w-[76px] items-center justify-center rounded-full bg-white active:opacity-75 dark:bg-[#151D29]"
-        style={nordicTokens.shadows.pillowy}
+        style={klockaTokens.shadows.pillowy}
         onPress={onRoutines}
       >
         <ListChecks color={colors.onSurfaceVariant} size={27} />
@@ -56,7 +56,7 @@ export function TimerActions({
         accessibilityLabel={resetLabel}
         accessibilityRole="button"
         className="h-[76px] w-[76px] items-center justify-center rounded-full bg-white active:opacity-75 dark:bg-[#151D29]"
-        style={nordicTokens.shadows.pillowy}
+        style={klockaTokens.shadows.pillowy}
         onPress={onReset}
       >
         <RotateCcw color={colors.onSurfaceVariant} size={27} />

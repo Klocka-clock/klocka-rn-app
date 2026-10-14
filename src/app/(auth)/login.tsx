@@ -27,8 +27,12 @@ export default function LoginScreen() {
       >
         <View className="flex-1 justify-center px-6 py-10">
           <View className="items-center">
-            <View className="h-24 w-24 items-center justify-center rounded-[32px] bg-[#192231] shadow-floating">
-              <Clock3 color="#E69A58" size={42} strokeWidth={1.5} />
+            <View className="h-24 w-24 items-center justify-center rounded-[32px] bg-klocka-primary shadow-floating dark:bg-[#192231]">
+              <Clock3
+                color={theme === "dark" ? "#E69A58" : colors.onPrimary}
+                size={42}
+                strokeWidth={1.5}
+              />
             </View>
             <Text
               className="mt-6 text-center text-[32px] font-normal"

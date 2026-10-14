@@ -52,7 +52,7 @@ export function WorldClockCard({ city, now }: WorldClockCardProps) {
             <Text className="text-[16px] font-semibold" style={{ color: palette.ink }}>
               {t(`home:cities.${city.id}.name`)}
             </Text>
-            <View className="rounded-full bg-[#F0EEE9] px-2 py-0.5 dark:bg-[#303B49]">
+            <View className="rounded-full bg-klocka-surface-container px-2 py-0.5 dark:bg-[#303B49]">
               <Text className="text-[9px] font-semibold" style={{ color: palette.ink }}>
                 {getUtcOffsetLabel(now, city.timeZone)}
               </Text>

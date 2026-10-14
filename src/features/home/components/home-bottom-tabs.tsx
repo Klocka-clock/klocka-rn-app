@@ -1,8 +1,8 @@
 import { Flower2, Globe2, Settings } from "lucide-react-native"
-import type { BottomTabBarProps } from "@react-navigation/bottom-tabs"
+import type { BottomTabBarProps } from "expo-router/js-tabs"
 import { Pressable, Text, View } from "react-native"
-import { useTranslation } from "@/i18n/use-translation"
 import { useGlobalStore } from "@/store/use-global-store"
+import { themeTokens } from "@/theme/tokens"
 import { bottomTabRoutes } from "./home-bottom-tabs.utils"
 
 const iconByRoute = {
@@ -12,18 +12,11 @@ const iconByRoute = {
 } as const
 
 export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarProps) {
-  const { t } = useTranslation()
   const theme = useGlobalStore((state) => state.theme)
-  const labels = [
-    t("navigation:world"),
-    t("navigation:pomodoro"),
-    t("navigation:timer"),
-    t("navigation:alarm"),
-    t("navigation:recent"),
-  ]
+  const colors = themeTokens[theme]
 
   return (
-    <View className="border-t border-[#EAE8E3] bg-[#FBF9F4] px-2 pb-2 pt-2 dark:border-[#303B49] dark:bg-[#0E141D]">
+    <View className="border-t border-klocka-tertiary bg-klocka-neutral px-2 pb-2 pt-2 dark:border-[#303B49] dark:bg-[#0E141D]">
       <View className="flex-row items-end justify-around">
         {state.routes
           .filter((route) =>
@@ -32,19 +25,14 @@ export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarP
           .map((route) => {
             const routeIndex = state.routes.findIndex((item) => item.key === route.key)
             const isFocused = state.index === routeIndex
+            const label = descriptors[route.key].options.title ?? route.name
             const Icon = iconByRoute[route.name as keyof typeof iconByRoute] ?? Globe2
-            const color = isFocused
-              ? theme === "dark"
-                ? "#BEC7DB"
-                : "#192231"
-              : theme === "dark"
-                ? "#89909C"
-                : "#9A9CA0"
+            const color = isFocused ? colors.primary : theme === "dark" ? "#89909C" : colors.outline
 
             return (
               <Pressable
                 key={route.key}
-                accessibilityLabel={labels[route.name as keyof typeof labels]}
+                accessibilityLabel={label}
                 accessibilityRole="tab"
                 accessibilityState={{ selected: isFocused }}
                 className="min-w-[58px] items-center gap-1 rounded-2xl px-2 py-1 active:opacity-60"
@@ -68,7 +56,7 @@ export function HomeBottomTabs({ state, descriptors, navigation }: BottomTabBarP
                   strokeWidth={1.8}
                 />
                 <Text className="text-[9px] font-medium" style={{ color }}>
-                  {labels[route.name as keyof typeof labels]}
+                  {label}
                 </Text>
               </Pressable>
             )

@@ -19,7 +19,7 @@ export function DurationControl({
 }) {
   const { t } = useTranslation()
   return (
-    <View className="flex-1 rounded-[24px] bg-[#F4F2ED] px-2 py-3 dark:bg-[#1B2430]">
+    <View className="flex-1 rounded-[24px] bg-klocka-surface-container px-2 py-3 dark:bg-[#1B2430]">
       <Pressable
         accessibilityLabel={t("pomodoro:increase", { unit: label })}
         accessibilityRole="button"

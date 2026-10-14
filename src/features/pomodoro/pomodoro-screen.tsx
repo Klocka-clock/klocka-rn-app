@@ -2,8 +2,8 @@ import { useTranslation } from "@/i18n/use-translation"
 import { useGlobalStore } from "@/store/use-global-store"
 import { themeTokens } from "@/theme/tokens"
 import { StatusBar } from "expo-status-bar"
-import { useEffect, useRef, useState } from "react"
-import { Animated, Easing, ScrollView, View } from "react-native"
+import { useEffect, useState } from "react"
+import { ScrollView, View } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { routines, type Routine } from "./pomodoro.data"
 import { PomodoroHeader } from "./components/organisms/pomodoro-header"
@@ -21,7 +21,6 @@ export function PomodoroScreen() {
   const [remaining, setRemaining] = useState(15 * 60)
   const [running, setRunning] = useState(false)
   const [showRoutines, setShowRoutines] = useState(false)
-  const routineSheetY = useRef(new Animated.Value(320)).current
 
   useEffect(() => {
     if (!running || remaining <= 0) {
@@ -32,18 +31,6 @@ export function PomodoroScreen() {
     const interval = setInterval(() => setRemaining((value) => tickDuration(value)), 1000)
     return () => clearInterval(interval)
   }, [remaining, running])
-
-  useEffect(() => {
-    if (!showRoutines) return
-
-    routineSheetY.setValue(320)
-    Animated.timing(routineSheetY, {
-      toValue: 0,
-      duration: 280,
-      easing: Easing.out(Easing.cubic),
-      useNativeDriver: true,
-    }).start()
-  }, [routineSheetY, showRoutines])
 
   const updateDuration = (unit: DurationUnit, amount: number) => {
     setDuration((value) => {
@@ -58,7 +45,6 @@ export function PomodoroScreen() {
     setDuration(routine.duration)
     setRemaining(routine.duration)
     setRunning(false)
-    setShowRoutines(false)
   }
 
   return (
@@ -72,6 +58,7 @@ export function PomodoroScreen() {
           <PomodoroHeader />
           <TimerCard
             colors={colors}
+            theme={theme}
             duration={duration}
             labels={{
               duration: t("pomodoro:duration"),
@@ -105,7 +92,6 @@ export function PomodoroScreen() {
         insetsBottom={insets.bottom}
         getLabel={t}
         routines={routines}
-        sheetY={routineSheetY}
         title={t("pomodoro:routines")}
         visible={showRoutines}
         onClose={() => setShowRoutines(false)}

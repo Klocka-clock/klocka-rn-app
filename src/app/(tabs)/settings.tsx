@@ -1,7 +1,7 @@
 import { languageNames, type LanguagePreference } from "@/i18n/config"
 import { useTranslation } from "@/i18n/use-translation"
 import { useGlobalStore } from "@/store/use-global-store"
-import { themeTokens } from "@/theme/tokens"
+import { themeTokens, type ThemeName, type ThemeTokens } from "@/theme/tokens"
 import { StatusBar } from "expo-status-bar"
 import { Check, ChevronRight, Moon, Palette, Sun, Volume2 } from "lucide-react-native"
 import { Alert, Pressable, ScrollView, Switch, Text, View } from "react-native"
@@ -21,16 +21,16 @@ function SettingRow({
   stacked?: boolean
 }) {
   return (
-    <View className="border-b border-[#EAE8E3] py-4 dark:border-[#303B49]">
+    <View className="border-b border-klocka-tertiary py-4 dark:border-[#303B49]">
       <View className="flex-row items-center gap-3">
-        <View className="h-10 w-10 items-center justify-center rounded-2xl bg-[#EBF2FA] dark:bg-[#26384D]">
+        <View className="h-10 w-10 items-center justify-center rounded-2xl bg-klocka-surface-container dark:bg-[#26384D]">
           {icon}
         </View>
         <View className="flex-1">
-          <Text className="text-[15px] font-semibold text-[#192231] dark:text-[#F2F1EC]">
+          <Text className="text-[15px] font-semibold text-typography-900 dark:text-[#F2F1EC]">
             {label}
           </Text>
-          <Text className="mt-0.5 text-[12px] text-[#75777D] dark:text-[#C5C6CC]">
+          <Text className="mt-0.5 text-[12px] text-typography-600 dark:text-[#C5C6CC]">
             {description}
           </Text>
         </View>
@@ -44,10 +44,14 @@ function SettingRow({
 function ChoicePill({
   label,
   selected,
+  theme,
+  colors,
   onPress,
 }: {
   label: string
   selected: boolean
+  theme: ThemeName
+  colors: ThemeTokens
   onPress: () => void
 }) {
   return (
@@ -55,10 +59,22 @@ function ChoicePill({
       accessibilityRole="button"
       accessibilityState={{ selected }}
       className="rounded-full px-3 py-2 active:opacity-70"
-      style={{ backgroundColor: selected ? "#E2EBD8" : "#F0EEE9" }}
+      style={{
+        backgroundColor:
+          theme === "dark"
+            ? selected
+              ? "#E2EBD8"
+              : "#F0EEE9"
+            : selected
+              ? colors.tertiary
+              : colors.surfaceContainer,
+      }}
       onPress={onPress}
     >
-      <Text className="text-[11px] font-semibold" style={{ color: "#192231" }}>
+      <Text
+        className="text-[11px] font-semibold"
+        style={{ color: theme === "dark" ? "#192231" : colors.onSurface }}
+      >
         {label}
       </Text>
     </Pressable>
@@ -105,16 +121,22 @@ export default function SettingsScreen() {
                 <ChoicePill
                   label={t("settings:system")}
                   selected={preference === "system"}
+                  theme={theme}
+                  colors={colors}
                   onPress={() => changeLanguage("system")}
                 />
                 <ChoicePill
                   label={languageNames.vi}
                   selected={preference === "vi"}
+                  theme={theme}
+                  colors={colors}
                   onPress={() => changeLanguage("vi")}
                 />
                 <ChoicePill
                   label={languageNames.en}
                   selected={preference === "en"}
+                  theme={theme}
+                  colors={colors}
                   onPress={() => changeLanguage("en")}
                 />
               </View>
@@ -134,7 +156,10 @@ export default function SettingsScreen() {
               <Switch
                 accessibilityLabel={t("themes.dark")}
                 thumbColor="#FFFFFF"
-                trackColor={{ false: "#DBDAD5", true: "#9AB8A2" }}
+                trackColor={{
+                  false: theme === "dark" ? "#DBDAD5" : colors.surfaceContainerHigh,
+                  true: theme === "dark" ? "#9AB8A2" : colors.primary,
+                }}
                 value={theme === "dark"}
                 onValueChange={(value) => setTheme(value ? "dark" : "light")}
               />
@@ -149,11 +174,15 @@ export default function SettingsScreen() {
                 <ChoicePill
                   label="☔"
                   selected={soundscape === "rain"}
+                  theme={theme}
+                  colors={colors}
                   onPress={() => setSoundscape("rain")}
                 />
                 <ChoicePill
                   label="〰"
                   selected={soundscape === "stream"}
+                  theme={theme}
+                  colors={colors}
                   onPress={() => setSoundscape("stream")}
                 />
               </View>
@@ -171,11 +200,14 @@ export default function SettingsScreen() {
               <Pressable
                 accessibilityRole="button"
                 accessibilityState={{ selected: backgroundMode === "ai" }}
-                className="flex-row items-center gap-1 rounded-full bg-[#F0EEE9] px-3 py-2 active:opacity-70 dark:bg-[#303B49]"
+                className="flex-row items-center gap-1 rounded-full bg-klocka-surface-container px-3 py-2 active:opacity-70 dark:bg-[#303B49]"
                 onPress={() => setBackgroundMode(backgroundMode === "default" ? "ai" : "default")}
               >
                 {backgroundMode === "ai" && <Check color={colors.primary} size={13} />}
-                <Text className="text-[11px] font-semibold" style={{ color: colors.primary }}>
+                <Text
+                  className="text-[11px] font-semibold"
+                  style={{ color: theme === "dark" ? colors.primary : "#136C37" }}
+                >
                   {backgroundMode === "ai" ? "AI" : t("settings:defaultBackground")}
                 </Text>
                 <ChevronRight color={colors.onSurfaceVariant} size={13} />

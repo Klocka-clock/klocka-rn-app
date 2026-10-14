@@ -1,4 +1,4 @@
-import { nordicTokens, type ThemeTokens } from "@/theme/tokens"
+import { klockaTokens, type ThemeName, type ThemeTokens } from "@/theme/tokens"
 import { Coffee } from "lucide-react-native"
 import { Text, View } from "react-native"
 import { formatDuration, type DurationUnit } from "../../pomodoro.utils"
@@ -10,19 +10,21 @@ export function TimerCard({
   duration,
   remaining,
   colors,
+  theme,
   labels,
   onAdjust,
 }: {
   duration: number
   remaining: number
   colors: ThemeTokens
+  theme: ThemeName
   labels: { duration: string; ready: string; hours: string; minutes: string; seconds: string }
   onAdjust: (unit: DurationUnit, amount: number) => void
 }) {
   return (
     <View
       className="mt-14 rounded-[34px] bg-white px-7 pb-7 pt-8 dark:bg-[#151D29]"
-      style={nordicTokens.shadows.floating}
+      style={klockaTokens.shadows.floating}
     >
       <View className="flex-row items-start justify-between">
         <LocalizedText
@@ -30,7 +32,7 @@ export function TimerCard({
           color={colors.onSurface}
           value={labels.duration}
         />
-        <View className="flex-row items-center rounded-full bg-[#F0EEE9] px-3 py-2 dark:bg-[#25303D]">
+        <View className="flex-row items-center rounded-full bg-klocka-surface-container px-3 py-2 dark:bg-[#25303D]">
           <Coffee color={colors.onSurfaceVariant} size={16} />
           <LocalizedText
             className="ml-2 text-[12px] font-semibold"
@@ -46,7 +48,10 @@ export function TimerCard({
         {formatDuration(remaining)}
       </Text>
       <View className="my-12">
-        <Waveform color={nordicTokens.colors.dimmaBlue} />
+        <Waveform
+          accentColor={theme === "dark" ? "#E2EBD8" : colors.waveGreen}
+          color={theme === "dark" ? "#EBF2FA" : colors.waveBlue}
+        />
       </View>
       <View className="flex-row gap-4">
         <DurationControl
