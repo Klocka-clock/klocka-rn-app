@@ -5,6 +5,7 @@
   },
   "build": {
     "development": {
+      "corepack": true,
       "developmentClient": true,
       "distribution": "internal",
       "environment": "development",
@@ -17,6 +18,7 @@
       }
     },
     "staging": {
+      "corepack": true,
       "distribution": "internal",
       "environment": "preview",
       "channel": "staging",
@@ -28,6 +30,7 @@
       }
     },
     "production": {
+      "corepack": true,
       "distribution": "store",
       "environment": "production",
       "channel": "production",
