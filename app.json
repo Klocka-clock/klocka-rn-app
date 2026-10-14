@@ -74,7 +74,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "1e0b517c-fcbb-4460-89bf-53fd4c572f99"
+        "projectId": "9946be77-a3f8-46c1-8939-0db898259bb3"
       }
     },
     "owner": "quindarts",
@@ -82,7 +82,7 @@
       "policy": "fingerprint"
     },
     "updates": {
-      "url": "https://u.expo.dev/1e0b517c-fcbb-4460-89bf-53fd4c572f99"
+      "url": "https://u.expo.dev/9946be77-a3f8-46c1-8939-0db898259bb3"
     }
   }
 }

@@ -1,0 +1,44 @@
+name: Manual EAS Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Platform to build
+        type: choice
+        required: true
+        options:
+          - android
+          - ios
+          - both
+      profile:
+        description: EAS build profile
+        type: choice
+        required: true
+        options:
+          - development
+          - staging
+          - production
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Start EAS build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Start selected EAS build
+        env:
+          PLATFORM: ${{ inputs.platform == 'both' && 'all' || inputs.platform }}
+          PROFILE: ${{ inputs.profile }}
+        run: eas build --platform "$PLATFORM" --profile "$PROFILE" --non-interactive --no-wait
